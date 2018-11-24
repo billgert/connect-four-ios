@@ -1,6 +1,6 @@
 import Foundation
 
-extension GameCore {
+extension Game {
   struct Disk {
     struct Location {
       let column: Int
@@ -17,7 +17,7 @@ extension GameCore {
   }
   
   enum Status {
-    case finished(winner: GamePlayer?)
-    case ongoing(current: GamePlayer)
+    case finished(winner: Player?)
+    case ongoing(current: Player)
   }
 }
