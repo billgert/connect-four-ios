@@ -3,7 +3,7 @@ import Foundation
 class Game {
   // MARK: - Public Properties
   
-  public var status: (Status) -> () = { _ in }
+  public var statusHandler: (Status) -> () = { _ in }
   
   public var playerOne: Player?
   public var playerTwo: Player?
@@ -24,10 +24,15 @@ class Game {
     self.columns = columns
     self.rows = rows
 
-    self.grid.subscribe { grid in
-      // Check if we have a match in diagonal, vertical or horizontal
-      // If no match we call switchPlayer()
-      // Always update status
+    self.grid.subscribe { [unowned self] grid in
+      if self.isFourInRow(grid) {
+        self.statusHandler(.finished(winner: self.player!))
+      } else if self.disks.count == 0 {
+        self.statusHandler(.finished(winner: nil))
+      } else {
+        self.player = self.switchPlayer()
+        self.statusHandler(.ongoing(current: self.player!))
+      }
     }
   }
   
@@ -42,7 +47,7 @@ class Game {
   
   public func dropDisk(in column: Int) throws -> Disk {
     // Check if the column in grid contains less disks than rows
-    // Check if there is a disk left in disks for the current player
+    // Check if there is a disk left in disks for the current player (check color)
     // If so we take out the next empty location in the column
     // We add the location to the disk
     // Then we move the disk to the grid by replacing the empty one at the location
@@ -50,13 +55,14 @@ class Game {
     return Disk(location: nil, color: nil)
   }
   
-  // MARK: - Private Functions
+  // MARK: - Helpers
   
-  private func isFourDisksInRow() -> Bool {
+  private func isFourInRow(_ grid: [[Disk]]) -> Bool {
+    // Check if we have a match in diagonal, vertical or horizontal
     return false
   }
   
-  private func switchPlayer() {
+  private func switchPlayer() -> Player {
     // Toggle the active player
   }
 }
