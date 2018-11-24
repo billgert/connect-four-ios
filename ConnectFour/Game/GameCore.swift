@@ -3,17 +3,17 @@ import Foundation
 class GameCore {
   // MARK: - Public Properties
   
-  public var status: (GameStatus) -> () = { _ in }
+  public var status: (Status) -> () = { _ in }
   
-  public var playerOne: GamePlayer?
-  public var playerTwo: GamePlayer?
+  public var playerOne: Player?
+  public var playerTwo: Player?
   
   // MARK: - Private Properties
   
-  private var player: GamePlayer?
+  private var player: Player?
   
-  private lazy var grid = Observable<[[GameDisk]]>(value: self.initialGrid())
-  private lazy var disks: [GameDisk] = self.initialDisks() // Available disks that are not inserted in to the grid
+  private lazy var grid = Observable<[[Disk]]>(value: self.initialGrid())
+  private lazy var disks: [Disk] = self.initialDisks() // Available disks that are not inserted in to the grid
   
   private let columns: Int
   private let rows: Int
@@ -36,17 +36,17 @@ class GameCore {
   public func start() {
     // Check if there is two players
     // Set all grid and availableDisks to it's initial values
-    self.grid = Observable<[[GameDisk]]>(value: self.initialGrid())
+    self.grid = Observable<[[Disk]]>(value: self.initialGrid())
     self.disks = self.initialDisks()
   }
   
-  public func insertDisk(at column: Int) throws -> GameDisk {
+  public func insertDisk(at column: Int) throws -> Disk {
     // Check if the column in grid contains less disks than rows
     // Check if there is a disk left in disks for the current player
     // If so we take out the next empty location in the column
     // We add the location to the disk
     // Then we move the disk to the grid by replacing the empty one at the location
-    // When this is done we return a GameDisk to update the UI
+    // When this is done we return a Disk to update the UI
   }
   
   // MARK: - Private Functions
@@ -55,41 +55,21 @@ class GameCore {
     // Toggle the active player
   }
   
-  private func initialDisks() -> [GameDisk] {
+  private func initialDisks() -> [Disk] {
     // Create two arrays with the size of (columns * rows) / 2
-    // Fill up the arrays with GameDisk adding both the players colors
+    // Fill up the arrays with Disk adding both the players colors
     // Return the arrays flattened by flatMap
   }
   
-  private func initialGrid() -> [[GameDisk]] {
+  private func initialGrid() -> [[Disk]] {
     return Array(
       repeating: Array(
-        repeating: GameDisk(location: nil, color: nil),
+        repeating: Disk(location: nil, color: nil),
         count: self.columns
       ),
       count: self.rows
     )
   }
-}
-
-struct GameDisk {
-  struct Location {
-    let column: Int
-    let row: Int
-  }
-  
-  let location: Location?
-  let color: String?
-}
-
-struct GamePlayer {
-  let name: String
-  let color: String
-}
-
-enum GameStatus {
-  case finished(winner: GamePlayer?)
-  case ongoing(current: GamePlayer)
 }
 
 class Observable<T> {

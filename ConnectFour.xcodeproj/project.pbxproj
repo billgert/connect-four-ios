@@ -14,6 +14,8 @@
 		182287BA21A8A2710053CCC0 /* ConnectFourTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182287B921A8A2710053CCC0 /* ConnectFourTests.swift */; };
 		182287C621A8A5600053CCC0 /* GameCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182287C521A8A5600053CCC0 /* GameCore.swift */; };
 		182287C721A8A5690053CCC0 /* GameCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182287C521A8A5600053CCC0 /* GameCore.swift */; };
+		182287CB21A9A5CD0053CCC0 /* GameModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182287CA21A9A5CD0053CCC0 /* GameModels.swift */; };
+		182287CC21A9A5FF0053CCC0 /* GameModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182287CA21A9A5CD0053CCC0 /* GameModels.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +39,7 @@
 		182287B921A8A2710053CCC0 /* ConnectFourTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectFourTests.swift; sourceTree = "<group>"; };
 		182287BB21A8A2710053CCC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		182287C521A8A5600053CCC0 /* GameCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCore.swift; sourceTree = "<group>"; };
+		182287CA21A9A5CD0053CCC0 /* GameModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModels.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				182287C521A8A5600053CCC0 /* GameCore.swift */,
+				182287CA21A9A5CD0053CCC0 /* GameModels.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -207,6 +211,7 @@
 			files = (
 				182287A721A8A2700053CCC0 /* ViewController.swift in Sources */,
 				182287A521A8A2700053CCC0 /* AppDelegate.swift in Sources */,
+				182287CB21A9A5CD0053CCC0 /* GameModels.swift in Sources */,
 				182287C621A8A5600053CCC0 /* GameCore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -216,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				182287C721A8A5690053CCC0 /* GameCore.swift in Sources */,
+				182287CC21A9A5FF0053CCC0 /* GameModels.swift in Sources */,
 				182287BA21A8A2710053CCC0 /* ConnectFourTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
