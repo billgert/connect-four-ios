@@ -38,7 +38,7 @@ class Game {
   
   // MARK: - Public Functions
   
-  public func start() {
+  public func start() throws {
     // Check if there is two players
     // Set all grid and availableDisks to it's initial values
     self.grid = Observable<[[Disk]]>(value: self.makeInitialGrid())
@@ -63,7 +63,7 @@ class Game {
   }
   
   private func switchPlayer() -> Player {
-    // Toggle the active player
+    return (self.player == self.playerOne) ? self.playerTwo! : self.playerOne!
   }
 }
 

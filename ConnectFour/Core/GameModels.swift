@@ -21,3 +21,11 @@ extension Game {
     case ongoing(current: Player)
   }
 }
+
+// MARK: - Equatable
+
+extension Game.Player: Equatable {
+  static func == (lhs: Game.Player, rhs: Game.Player) -> Bool {
+    return lhs.name == rhs.name
+  }
+}
