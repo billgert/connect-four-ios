@@ -12,8 +12,8 @@ class Game {
   
   private var player: Player?
   
-  private lazy var grid = Observable<[[Disk]]>(value: self.initialGrid())
-  private lazy var disks: [Disk] = self.initialDisks() // Available disks that are not inserted in to the grid
+  private lazy var grid = Observable<[[Disk]]>(value: self.makeInitialGrid())
+  private lazy var disks: [Disk] = self.makeInitialDisks() // Available disks that are not inserted in to the grid
   
   private let columns: Int
   private let rows: Int
@@ -36,8 +36,8 @@ class Game {
   public func start() {
     // Check if there is two players
     // Set all grid and availableDisks to it's initial values
-    self.grid = Observable<[[Disk]]>(value: self.initialGrid())
-    self.disks = self.initialDisks()
+    self.grid = Observable<[[Disk]]>(value: self.makeInitialGrid())
+    self.disks = self.makeInitialDisks()
   }
   
   public func insertDisk(at column: Int) throws -> Disk {
@@ -54,14 +54,18 @@ class Game {
   private func switchPlayer() {
     // Toggle the active player
   }
-  
-  private func initialDisks() -> [Disk] {
+}
+
+// MARK: - Factory
+
+extension Game {
+  private func makeInitialDisks() -> [Disk] {
     // Create two arrays with the size of (columns * rows) / 2
     // Fill up the arrays with Disk adding both the players colors
     // Return the arrays flattened by flatMap
   }
   
-  private func initialGrid() -> [[Disk]] {
+  private func makeInitialGrid() -> [[Disk]] {
     return Array(
       repeating: Array(
         repeating: Disk(location: nil, color: nil),
