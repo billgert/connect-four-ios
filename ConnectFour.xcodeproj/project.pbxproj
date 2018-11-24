@@ -18,6 +18,8 @@
 		182287CC21A9A5FF0053CCC0 /* GameModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182287CA21A9A5CD0053CCC0 /* GameModels.swift */; };
 		182287CF21A9A74B0053CCC0 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182287CE21A9A74B0053CCC0 /* Observable.swift */; };
 		182287D221A9A76B0053CCC0 /* String+Pointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182287D121A9A76B0053CCC0 /* String+Pointer.swift */; };
+		182287D321A9B83C0053CCC0 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182287CE21A9A74B0053CCC0 /* Observable.swift */; };
+		182287D421A9B83F0053CCC0 /* String+Pointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182287D121A9A76B0053CCC0 /* String+Pointer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -244,9 +246,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				182287D321A9B83C0053CCC0 /* Observable.swift in Sources */,
 				182287C721A8A5690053CCC0 /* Game.swift in Sources */,
 				182287CC21A9A5FF0053CCC0 /* GameModels.swift in Sources */,
 				182287BA21A8A2710053CCC0 /* ConnectFourTests.swift in Sources */,
+				182287D421A9B83F0053CCC0 /* String+Pointer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
