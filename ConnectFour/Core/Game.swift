@@ -40,16 +40,21 @@ class Game {
     self.disks = self.makeInitialDisks()
   }
   
-  public func insertDisk(at column: Int) throws -> Disk {
+  public func dropDisk(in column: Int) throws -> Disk {
     // Check if the column in grid contains less disks than rows
     // Check if there is a disk left in disks for the current player
     // If so we take out the next empty location in the column
     // We add the location to the disk
     // Then we move the disk to the grid by replacing the empty one at the location
     // When this is done we return a Disk to update the UI
+    return Disk(location: nil, color: nil)
   }
   
   // MARK: - Private Functions
+  
+  private func isFourDisksInRow() -> Bool {
+    return false
+  }
   
   private func switchPlayer() {
     // Toggle the active player
@@ -63,6 +68,7 @@ extension Game {
     // Create two arrays with the size of (columns * rows) / 2
     // Fill up the arrays with Disk adding both the players colors
     // Return the arrays flattened by flatMap
+    return []
   }
   
   private func makeInitialGrid() -> [[Disk]] {
