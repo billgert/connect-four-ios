@@ -12,19 +12,19 @@ class GameCore {
   
   private var player: GamePlayer?
   
-  private lazy var bricksGrid = Observable<[[GameBrick]]>(value: self.initialBricksGrid())
-  private lazy var availableBricks: [GameBrick] = self.initialAvailableBricks()
+  private lazy var grid = Observable<[[GameDisk]]>(value: self.initialGrid())
+  private lazy var disks: [GameDisk] = self.initialDisks() // Available disks that are not inserted in to the grid
   
-  private let numberOfColumns: Int
-  private let numberOfRows: Int
+  private let columns: Int
+  private let rows: Int
   
   // MARK: - Lifecycle
   
-  init(numberOfColumns: Int, numberOfRows: Int) {
-    self.numberOfColumns = numberOfColumns
-    self.numberOfRows = numberOfRows
+  init(columns: Int, rows: Int) {
+    self.columns = columns
+    self.rows = rows
 
-    self.bricksGrid.subscribe { grid in
+    self.grid.subscribe { grid in
       // Check if we have a match in diagonal, vertical or horizontal
       // If no match we call switchPlayer()
       // Always update status
@@ -35,46 +35,44 @@ class GameCore {
   
   public func start() {
     // Check if there is two players
-    // If so reset()
+    // Set all grid and availableDisks to it's initial values
+    self.grid = Observable<[[GameDisk]]>(value: self.initialGrid())
+    self.disks = self.initialDisks()
   }
   
-  public func insertBrick(at column: Int) throws -> GameBrick {
-    // Check if the column in bricksGrid contains less bricks than numberOfRows
-    // Check if there is a brick left in availableBricks for the current player
+  public func insertDisk(at column: Int) throws -> GameDisk {
+    // Check if the column in grid contains less disks than rows
+    // Check if there is a disk left in disks for the current player
     // If so we take out the next empty location in the column
-    // We add the location to the brick
-    // Then we move the brick to the bricksGrid by replacing the empty one at the location
-    // When this is done we return a GameBrick to update the UI
+    // We add the location to the disk
+    // Then we move the disk to the grid by replacing the empty one at the location
+    // When this is done we return a GameDisk to update the UI
   }
   
   // MARK: - Private Functions
-  
-  private func reset() {
-    // Set all bricksGrid and availableBricks to it's initial values
-  }
   
   private func switchPlayer() {
     // Toggle the active player
   }
   
-  private func initialAvailableBricks() -> [GameBrick] {
-    // Create two arrays with the size of (numberOfColumns * numberOfRows) / 2
-    // Fill up the arrays with GameBrick adding both the players colors
+  private func initialDisks() -> [GameDisk] {
+    // Create two arrays with the size of (columns * rows) / 2
+    // Fill up the arrays with GameDisk adding both the players colors
     // Return the arrays flattened by flatMap
   }
   
-  private func initialBricksGrid() -> [[GameBrick]] {
+  private func initialGrid() -> [[GameDisk]] {
     return Array(
       repeating: Array(
-        repeating: GameBrick(location: nil, color: nil),
-        count: self.numberOfColumns
+        repeating: GameDisk(location: nil, color: nil),
+        count: self.columns
       ),
-      count: self.numberOfRows
+      count: self.rows
     )
   }
 }
 
-struct GameBrick {
+struct GameDisk {
   struct Location {
     let column: Int
     let row: Int
