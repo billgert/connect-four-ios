@@ -12,8 +12,8 @@ class Game {
   
   private var player: Player?
   
-  private lazy var grid = Observable<[[Disk]]>(value: self.makeInitialGrid())
-  private lazy var disks: [Disk] = self.makeInitialDisks() // Available disks that are not inserted in to the grid
+  private var grid = Observable<[[Disk]]>(value: [[]])
+  private var disks: [Disk] = [] // Available disks that are not inserted in to the grid
   
   private let columns: Int
   private let rows: Int
@@ -33,8 +33,12 @@ class Game {
   // MARK: - Public Functions
   
   public func start() throws {
-    // Check if there is two players
-    // Set all grid and availableDisks to it's initial values
+    self.player = try self.switchPlayer()
+    
+    guard self.columns > 0 else {
+      throw Error.columns
+    }
+    
     self.grid.value = self.makeInitialGrid()
     self.disks = self.makeInitialDisks()
   }
@@ -58,7 +62,7 @@ class Game {
   }
 
   private func currentStatus() -> Status {
-    if self.grid.value!.count == 0 {
+    if self.columns > 0 {
       return .start(player: self.player!)
     } else if self.isFourInRow(self.grid.value!) {
       return .win(player: self.player!)
@@ -69,21 +73,18 @@ class Game {
     }
   }
   
-  private func switchPlayer() {
-    self.player = (self.player == self.playerOne) ? self.playerTwo! : self.playerOne!
+  private func switchPlayer() throws -> Player {
+    guard self.playerOne != nil && self.playerTwo != nil else {
+      throw Error.players
+    }
+    
+    return (self.player == self.playerOne) ? self.playerTwo! : self.playerOne!
   }
 }
 
 // MARK: - Factory
 
 extension Game {
-  private func makeInitialDisks() -> [Disk] {
-    // Create two arrays with the size of (columns * rows) / 2
-    // Fill up the arrays with Disk adding both the players colors
-    // Return the arrays flattened by flatMap
-    return []
-  }
-  
   private func makeInitialGrid() -> [[Disk]] {
     return Array(
       repeating: Array(
@@ -92,6 +93,14 @@ extension Game {
       ),
       count: self.rows
     )
+  }
+  
+  // Create two arrays with the size of (columns * rows) / 2
+  // Fill up the arrays with Disk adding both the players colors
+  // Return the arrays flattened by flatMap
+  private func makeInitialDisks() -> [Disk] {
+    let disks: [Disk] = []
+    return disks
   }
 }
 

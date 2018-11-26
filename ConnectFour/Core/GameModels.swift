@@ -22,6 +22,21 @@ extension Game {
     case draw
     case win(player: Player)
   }
+  
+  enum Error: LocalizedError {
+    case players
+    case columns
+    
+    // Accessable from localizedDescription
+    var errorDescription: String? {
+      switch self {
+      case .players:
+        return NSLocalizedString("Players have not been set.", comment: "")
+      case .columns:
+        return NSLocalizedString("There are no columns for building the game.", comment: "")
+      }
+    }
+  }
 }
 
 // MARK: - Equatable

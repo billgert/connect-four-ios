@@ -11,7 +11,7 @@
 		182287A721A8A2700053CCC0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182287A621A8A2700053CCC0 /* ViewController.swift */; };
 		182287AC21A8A2710053CCC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 182287AB21A8A2710053CCC0 /* Assets.xcassets */; };
 		182287AF21A8A2710053CCC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 182287AD21A8A2710053CCC0 /* LaunchScreen.storyboard */; };
-		182287BA21A8A2710053CCC0 /* ConnectFourTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182287B921A8A2710053CCC0 /* ConnectFourTests.swift */; };
+		182287BA21A8A2710053CCC0 /* CoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182287B921A8A2710053CCC0 /* CoreTests.swift */; };
 		182287C621A8A5600053CCC0 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182287C521A8A5600053CCC0 /* Game.swift */; };
 		182287C721A8A5690053CCC0 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182287C521A8A5600053CCC0 /* Game.swift */; };
 		182287CB21A9A5CD0053CCC0 /* GameModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182287CA21A9A5CD0053CCC0 /* GameModels.swift */; };
@@ -40,7 +40,7 @@
 		182287AE21A8A2710053CCC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		182287B021A8A2710053CCC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		182287B521A8A2710053CCC0 /* ConnectFourTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConnectFourTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		182287B921A8A2710053CCC0 /* ConnectFourTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectFourTests.swift; sourceTree = "<group>"; };
+		182287B921A8A2710053CCC0 /* CoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreTests.swift; sourceTree = "<group>"; };
 		182287BB21A8A2710053CCC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		182287C521A8A5600053CCC0 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		182287CA21A9A5CD0053CCC0 /* GameModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModels.swift; sourceTree = "<group>"; };
@@ -102,7 +102,7 @@
 		182287B821A8A2710053CCC0 /* ConnectFourTests */ = {
 			isa = PBXGroup;
 			children = (
-				182287B921A8A2710053CCC0 /* ConnectFourTests.swift */,
+				182287B921A8A2710053CCC0 /* CoreTests.swift */,
 				182287BB21A8A2710053CCC0 /* Info.plist */,
 			);
 			path = ConnectFourTests;
@@ -249,7 +249,7 @@
 				182287D321A9B83C0053CCC0 /* Observable.swift in Sources */,
 				182287C721A8A5690053CCC0 /* Game.swift in Sources */,
 				182287CC21A9A5FF0053CCC0 /* GameModels.swift in Sources */,
-				182287BA21A8A2710053CCC0 /* ConnectFourTests.swift in Sources */,
+				182287BA21A8A2710053CCC0 /* CoreTests.swift in Sources */,
 				182287D421A9B83F0053CCC0 /* String+Pointer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
