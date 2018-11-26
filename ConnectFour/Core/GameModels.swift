@@ -17,10 +17,10 @@ extension Game {
   }
   
   enum Status {
-    case start(player: Player)
-    case active(player: Player)
+    case start(Player)
+    case active(Player)
     case draw
-    case win(player: Player)
+    case win(Player)
   }
   
   enum Error: LocalizedError {

@@ -56,21 +56,21 @@ class Game {
   
   // MARK: - Helpers
   
-  private func isFourInRow(_ grid: [[Disk]]) -> Bool {
-    // Check if we have a match in diagonal, vertical or horizontal
-    return false
-  }
-
   private func currentStatus() -> Status {
     if self.columns > 0 {
-      return .start(player: self.player!)
+      return .start(self.player!)
     } else if self.isFourInRow(self.grid.value!) {
-      return .win(player: self.player!)
+      return .win(self.player!)
     } else if self.disks.count == 0 {
       return .draw
     } else {
-      return .active(player: self.player!)
+      return .active(self.player!)
     }
+  }
+  
+  private func isFourInRow(_ grid: [[Disk]]) -> Bool {
+    // Check if we have a match in diagonal, vertical or horizontal
+    return false
   }
   
   private func switchPlayer() throws -> Player {
