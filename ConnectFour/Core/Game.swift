@@ -12,8 +12,8 @@ class Game {
   
   private var player: Player?
   
-  private var grid = Observable<[[Disk?]]>(value: [[]])
-  private var disks: [Disk] = [] // Available disks that are not inserted in to the grid
+  public var grid = Observable<[[Disk?]]>(value: [[]])
+  public var disks: [Disk] = [] // Available disks that are not inserted in to the grid
   
   private let columns: Int
   private let rows: Int
@@ -45,33 +45,46 @@ class Game {
     self.player = try self.switchPlayer()
     
     guard self.columns > 0 else {
-      throw Error.columns
+      throw Error.noColumns
     }
     
-    self.grid.value = self.makeInitialGrid()
     self.disks = self.makeInitialDisks()
+    self.grid.value = self.makeInitialGrid()
   }
   
+  @discardableResult
   public func dropDisk(in column: Int) throws -> Disk {
-    // Check if the column in grid contains less disks than rows
-    // Check if there is a disk left in disks for the current player (check color)
-    // If so we take out the next empty location in the column
-    // We add the location to the disk
-    // Then we move the disk to the grid by replacing the empty one at the location
-    // When this is done we return a Disk to update the UI
-    return Disk(location: nil, color: nil)
+    let gridColumn = self.grid.value![column]
+
+    guard let emptyRow = gridColumn.firstIndex(where: { $0 == nil } ) else {
+      throw Error.columnFull
+    }
+    
+    guard var disk = self.disks.first(where: { $0.color == self.player!.color }) else {
+      throw Error.noDisksLeft
+    }
+    
+    disk.location = Disk.Location(column: column, row: emptyRow)
+
+    self.grid.value![column][emptyRow] = disk
+    
+    return disk
   }
   
   // MARK: - Helpers
   
   private func isStart() -> Bool {
-    return self.disks.count != 0 && self.disks.count == (self.columns * self.rows)
+    return self.disks.count != 0 && (self.disks.count == (self.columns * self.rows))
   }
-  
+
   private func isFinished() -> Bool {
-    return self.grid.value!.contains(where: {
-      return $0.contains(where: { $0 != nil } )
-    })
+    for column in self.grid.value! {
+      if column.contains(where: { $0 == nil } ) {
+        return false
+      }
+    }
+
+    return true
   }
   
   private func isFourInRow() -> Bool {
@@ -95,18 +108,17 @@ extension Game {
     return Array(
       repeating: Array(
         repeating: nil,
-        count: self.columns
+        count: self.rows
       ),
-      count: self.rows
+      count: self.columns
     )
   }
   
-  // Create two arrays with the size of (columns * rows) / 2
-  // Fill up the arrays with Disk adding both the players colors
-  // Return the arrays flattened by flatMap
   private func makeInitialDisks() -> [Disk] {
-    let disks: [Disk] = []
-    return disks
+    let playerDisksCount = (self.columns * self.rows) / 2
+    let playerOneDisks = Array(repeating: Disk(location: nil, color: self.playerOne!.color), count: playerDisksCount)
+    let playerTwoDisks = Array(repeating: Disk(location: nil, color: self.playerTwo!.color), count: playerDisksCount)
+    return playerOneDisks + playerTwoDisks
   }
 }
 

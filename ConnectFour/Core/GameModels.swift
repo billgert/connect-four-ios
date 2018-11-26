@@ -7,8 +7,8 @@ extension Game {
       let row: Int
     }
     
-    let location: Location?
-    let color: String?
+    var location: Location?
+    let color: String
   }
   
   struct Player {
@@ -24,15 +24,21 @@ extension Game {
   
   enum Error: LocalizedError {
     case players
-    case columns
+    case noColumns
+    case columnFull
+    case noDisksLeft
     
     // Accessable from localizedDescription
     var errorDescription: String? {
       switch self {
       case .players:
         return NSLocalizedString("Players have not been set.", comment: "")
-      case .columns:
+      case .noColumns:
         return NSLocalizedString("There are no columns for building the game.", comment: "")
+      case .columnFull:
+        return NSLocalizedString("The column is full.", comment: "")
+      case .noDisksLeft:
+        return NSLocalizedString("There are no more disks available for the current player.", comment: "")
       }
     }
   }
