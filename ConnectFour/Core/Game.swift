@@ -12,7 +12,7 @@ class Game {
   
   private var player: Player?
   
-  private var grid = Observable<[[Disk]]>(value: [[]])
+  private var grid = Observable<[[Disk?]]>(value: [[]])
   private var disks: [Disk] = [] // Available disks that are not inserted in to the grid
   
   private let columns: Int
@@ -25,8 +25,17 @@ class Game {
     self.rows = rows
 
     self.grid.subscribe { [unowned self] grid in
-      let status = self.currentStatus()
-      self.statusHandler(status)
+      if self.isFourInRow() {
+        self.statusHandler(.finished(winner: self.player))
+      } else if self.isFinished() {
+        let winner = self.isFourInRow() ? self.player : nil
+        self.statusHandler(.finished(winner: winner))
+      } else if self.isStart() {
+        self.statusHandler(.start(self.player!))
+      } else {
+        self.player = try? self.switchPlayer()
+        self.statusHandler(.active(self.player!))
+      }
     }
   }
   
@@ -49,27 +58,24 @@ class Game {
     // If so we take out the next empty location in the column
     // We add the location to the disk
     // Then we move the disk to the grid by replacing the empty one at the location
-    // Before returning the disk we call switchPlayer()
     // When this is done we return a Disk to update the UI
     return Disk(location: nil, color: nil)
   }
   
   // MARK: - Helpers
   
-  private func currentStatus() -> Status {
-    if self.columns > 0 {
-      return .start(self.player!)
-    } else if self.isFourInRow(self.grid.value!) {
-      return .win(self.player!)
-    } else if self.disks.count == 0 {
-      return .draw
-    } else {
-      return .active(self.player!)
-    }
+  private func isStart() -> Bool {
+    return self.disks.count != 0 && self.disks.count == (self.columns * self.rows)
   }
   
-  private func isFourInRow(_ grid: [[Disk]]) -> Bool {
-    // Check if we have a match in diagonal, vertical or horizontal
+  private func isFinished() -> Bool {
+    return self.grid.value!.contains(where: {
+      return $0.contains(where: { $0 != nil } )
+    })
+  }
+  
+  private func isFourInRow() -> Bool {
+    // Check if we have a match in diagonal, vertical or horizontal on self.grid
     return false
   }
   
@@ -85,10 +91,10 @@ class Game {
 // MARK: - Factory
 
 extension Game {
-  private func makeInitialGrid() -> [[Disk]] {
+  private func makeInitialGrid() -> [[Disk?]] {
     return Array(
       repeating: Array(
-        repeating: Disk(location: nil, color: nil),
+        repeating: nil,
         count: self.columns
       ),
       count: self.rows
