@@ -28,7 +28,6 @@ extension Game {
     case columnFull
     case noDisksLeft
     
-    // Accessable from localizedDescription
     var errorDescription: String? {
       switch self {
       case .players:

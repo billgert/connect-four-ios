@@ -12,8 +12,8 @@ class Game {
   
   private var player: Player?
   
-  public var grid = Observable<[[Disk?]]>(value: [[]])
-  public var disks: [Disk] = [] // Available disks that are not inserted in to the grid
+  private var grid = Observable<[[Disk?]]>(value: [[]])
+  private var disks: [Disk] = [] // Available disks that are not inserted in to the grid
   
   private let columns: Int
   private let rows: Int
@@ -53,7 +53,7 @@ class Game {
   }
   
   @discardableResult
-  public func dropDisk(in column: Int) throws -> Disk {
+  public func dropDiskInColumn(_ column: Int) throws -> Disk {
     let gridColumn = self.grid.value![column]
 
     guard let emptyRow = gridColumn.firstIndex(where: { $0 == nil } ) else {
