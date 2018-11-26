@@ -17,8 +17,10 @@ extension Game {
   }
   
   enum Status {
-    case finished(winner: Player?)
-    case ongoing(current: Player)
+    case start(player: Player)
+    case active(player: Player)
+    case draw
+    case win(player: Player)
   }
 }
 
