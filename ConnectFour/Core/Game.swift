@@ -25,14 +25,8 @@ class Game {
     self.rows = rows
 
     self.grid.subscribe { [unowned self] grid in
-      if self.isFourInRow(grid) {
-        self.statusHandler(.finished(winner: self.player!))
-      } else if self.disks.count == 0 {
-        self.statusHandler(.finished(winner: nil))
-      } else {
-        self.player = self.switchPlayer()
-        self.statusHandler(.ongoing(current: self.player!))
-      }
+      let status = self.currentStatus()
+      self.statusHandler(status)
     }
   }
   
@@ -41,7 +35,7 @@ class Game {
   public func start() throws {
     // Check if there is two players
     // Set all grid and availableDisks to it's initial values
-    self.grid = Observable<[[Disk]]>(value: self.makeInitialGrid())
+    self.grid.value = self.makeInitialGrid()
     self.disks = self.makeInitialDisks()
   }
   
@@ -51,6 +45,7 @@ class Game {
     // If so we take out the next empty location in the column
     // We add the location to the disk
     // Then we move the disk to the grid by replacing the empty one at the location
+    // Before returning the disk we call switchPlayer()
     // When this is done we return a Disk to update the UI
     return Disk(location: nil, color: nil)
   }
@@ -61,9 +56,21 @@ class Game {
     // Check if we have a match in diagonal, vertical or horizontal
     return false
   }
+
+  private func currentStatus() -> Status {
+    if self.grid.value!.count == 0 {
+      return .start(player: self.player!)
+    } else if self.isFourInRow(self.grid.value!) {
+      return .win(player: self.player!)
+    } else if self.disks.count == 0 {
+      return .draw
+    } else {
+      return .active(player: self.player!)
+    }
+  }
   
-  private func switchPlayer() -> Player {
-    return (self.player == self.playerOne) ? self.playerTwo! : self.playerOne!
+  private func switchPlayer() {
+    self.player = (self.player == self.playerOne) ? self.playerTwo! : self.playerOne!
   }
 }
 
