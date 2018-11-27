@@ -90,7 +90,7 @@ class Game {
           continue
         }
         
-         // Vertical (up)
+         // Look up
         if row + 3 < self.rows &&
           slot == self.grid[column][row + 1] &&
           slot == self.grid[column][row + 2] &&
@@ -100,11 +100,29 @@ class Game {
         }
         
         if column + 3 < self.columns {
-          // Horizontal (right)
+          // Look right
           if slot == self.grid[column + 1][row] &&
             slot == self.grid[column + 2][row] &&
             slot == self.grid[column + 3][row] {
             print("horizontal: \(self.grid)")
+            return true
+          }
+          
+          // Look up & right
+          if row + 3 < self.rows &&
+            slot == self.grid[column + 1][row + 1] &&
+            slot == self.grid[column + 2][row + 2] &&
+            slot == self.grid[column + 3][row + 3] {
+            print("diagonal right: \(self.grid)")
+            return true
+          }
+          
+          // Look up & left
+          if row - 3 >= 0 &&
+            slot == self.grid[column + 1][row - 1] &&
+            slot == self.grid[column + 2][row - 2] &&
+            slot == self.grid[column + 3][row - 3] {
+            print("diagonal left: \(self.grid)")
             return true
           }
         }
