@@ -9,12 +9,11 @@ class Game {
   public var playerTwo: Player?
   
   // MARK: - Private Properties
+
+  private var activePlayer: Player?
   
-  private var player: Player?
-  
-  private var grid = Observable<[[Disk?]]>(value: [[]])
-  private var disks: [Disk] = [] // Available disks that are not inserted in to the grid
-  
+  private var grid = Observable<[[Int]]>(value: [[]])
+
   private let columns: Int
   private let rows: Int
   
@@ -26,15 +25,12 @@ class Game {
 
     self.grid.subscribe { [unowned self] grid in
       if self.isFourInRow() {
-        self.statusHandler(.finished(winner: self.player))
+        self.statusHandler(.finished(winner: self.activePlayer))
       } else if self.isFinished() {
-        let winner = self.isFourInRow() ? self.player : nil
-        self.statusHandler(.finished(winner: winner))
-      } else if self.isStart() {
-        self.statusHandler(.start(self.player!))
+        self.statusHandler(.finished(winner: nil))
       } else {
-        self.player = try? self.switchPlayer()
-        self.statusHandler(.active(self.player!))
+        self.activePlayer = self.switchActivePlayer()
+        self.statusHandler(.active(self.activePlayer!))
       }
     }
   }
@@ -42,83 +38,120 @@ class Game {
   // MARK: - Public Functions
   
   public func start() throws {
-    self.player = try self.switchPlayer()
+    guard self.playerOne != nil && self.playerTwo != nil else {
+      throw Error.players
+    }
     
     guard self.columns > 0 else {
       throw Error.noColumns
     }
     
-    self.disks = self.makeInitialDisks()
     self.grid.value = self.makeInitialGrid()
   }
   
-  @discardableResult
-  public func dropDiskInColumn(_ column: Int) throws -> Disk {
-    let gridColumn = self.grid.value![column]
-
-    guard let emptyRow = gridColumn.firstIndex(where: { $0 == nil } ) else {
+  public func dropDiskInColumn(_ column: Int) throws {
+    guard let emptySlot = self.emptyRow(in: column) else {
       throw Error.columnFull
     }
-    
-    guard var disk = self.disks.first(where: { $0.color == self.player!.color }) else {
-      throw Error.noDisksLeft
-    }
-    
-    disk.location = Disk.Location(column: column, row: emptyRow)
 
-    self.grid.value![column][emptyRow] = disk
-    
-    return disk
+    let disk = self.activePlayer == self.playerOne ? 1 : 2
+
+    self.grid.value![column][emptySlot] = disk
   }
   
   // MARK: - Helpers
   
+  private func switchActivePlayer() -> Player? {
+    return self.activePlayer == self.playerOne ? self.playerTwo : self.playerOne
+  }
+  
   private func isStart() -> Bool {
-    return self.disks.count != 0 && (self.disks.count == (self.columns * self.rows))
+    for column in self.grid.value! {
+      if column.contains(where: { $0 != 0 } ) {
+        return false
+      }
+    }
+    
+    return true
   }
 
   private func isFinished() -> Bool {
     for column in self.grid.value! {
-      if column.contains(where: { $0 == nil } ) {
+      if column.contains(where: { $0 == 0 } ) {
         return false
       }
     }
-
+    
     return true
   }
   
   private func isFourInRow() -> Bool {
-    // Check if we have a match in diagonal, vertical or horizontal on self.grid
+    let height = self.rows
+    let width = self.columns
+    let emptySlot = 0
+    
+    guard let grid = self.grid.value else {
+      return false
+    }
+    
+    for column in 0..<width { // Iterate on columns from left to right
+      for row in 0..<height { // Iterate on rows in column from bottom to top
+        
+        let slot = grid[column][row]
+        
+        if slot == emptySlot {
+          continue
+        }
+        
+         // Vertical (up)
+        if row + 3 < self.rows &&
+          slot == grid[column][row + 1] &&
+          slot == grid[column][row + 2] &&
+          slot == grid[column][row + 3] {
+          print(grid)
+          return true
+        }
+        
+        if column + 3 < self.columns {
+          // Horizontal (right)
+          if slot == grid[column + 1][row] &&
+            slot == grid[column + 2][row] &&
+            slot == grid[column + 3][row] {
+            print(grid)
+            return true
+          }
+        }
+      }
+    }
+
     return false
   }
   
-  private func switchPlayer() throws -> Player {
-    guard self.playerOne != nil && self.playerTwo != nil else {
-      throw Error.players
+  private func emptyRow(in column: Int) -> Int? {
+    let height = self.rows
+
+    for row in 0..<height {
+      let slot = self.grid.value![column][row]
+      if slot == 0 {
+        return row
+      }
     }
     
-    return (self.player == self.playerOne) ? self.playerTwo! : self.playerOne!
+    return nil
   }
 }
 
 // MARK: - Factory
 
 extension Game {
-  private func makeInitialGrid() -> [[Disk?]] {
+  private func makeInitialGrid() -> [[Int]] { // 0, 1 och 2 (player 1 och 2)
     return Array(
       repeating: Array(
-        repeating: nil,
+        repeating: 0,
         count: self.rows
       ),
       count: self.columns
     )
-  }
-  
-  private func makeInitialDisks() -> [Disk] {
-    let playerDisksCount = (self.columns * self.rows) / 2
-    let playerOneDisks = Array(repeating: Disk(location: nil, color: self.playerOne!.color), count: playerDisksCount)
-    let playerTwoDisks = Array(repeating: Disk(location: nil, color: self.playerTwo!.color), count: playerDisksCount)
-    return playerOneDisks + playerTwoDisks
   }
 }
 

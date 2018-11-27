@@ -44,9 +44,7 @@ class CoreTests: XCTestCase {
 
     do {
       try game.start()
-      let disk = try game.dropDiskInColumn(2)
-      XCTAssertTrue(disk.location!.column == 2)
-      XCTAssertTrue(disk.location!.row == 0)
+      try game.dropDiskInColumn(2)
     } catch {
       XCTAssertTrue(false, "testGameDropDiskSuccess: Error")
     }
@@ -63,9 +61,7 @@ class CoreTests: XCTestCase {
       try game.dropDiskInColumn(2)
       try game.dropDiskInColumn(2)
       try game.dropDiskInColumn(2)
-      let disk = try game.dropDiskInColumn(2)
-      XCTAssertTrue(disk.location!.column == 2)
-      XCTAssertTrue(disk.location!.row == 3)
+      try game.dropDiskInColumn(2)
     } catch {
       XCTAssertTrue(false, "testGameDropMultipleDisksSuccess: Error")
     }
@@ -94,21 +90,59 @@ class CoreTests: XCTestCase {
     }
   }
   
-  // MARK: - statusHandler
+  // MARK: - isFourInRow()
   
-  func testGameStatusHandlerStarted() {
+  func testGameIsFourInRowHorizontal() {
     let game = Game(columns: 7, rows: 6)
     
     game.playerOne = self.playerOne
     game.playerTwo = self.playerTwo
     
+    XCTAssertNoThrow(try game.start())
+    XCTAssertNoThrow(try game.dropDiskInColumn(0))
+    XCTAssertNoThrow(try game.dropDiskInColumn(0))
+    XCTAssertNoThrow(try game.dropDiskInColumn(1))
+    XCTAssertNoThrow(try game.dropDiskInColumn(1))
+    XCTAssertNoThrow(try game.dropDiskInColumn(2))
+    XCTAssertNoThrow(try game.dropDiskInColumn(2))
+    
     game.statusHandler = { status in
-      guard case .start = status else {
-        XCTAssertTrue(false, "testGameStatusHandlerStarted: Error")
-        return
+      switch status {
+      case .finished(let winner):
+        XCTAssertNotNil(winner)
+      default:
+        XCTAssertTrue(false, "testGameIsFourInRow: Error")
       }
     }
     
+    XCTAssertNoThrow(try game.dropDiskInColumn(3))
+  }
+  
+  func testGameIsFourInRowVertical() {
+    let game = Game(columns: 7, rows: 6)
+    
+    game.playerOne = self.playerOne
+    game.playerTwo = self.playerTwo
+  
     XCTAssertNoThrow(try game.start())
+    XCTAssertNoThrow(try game.dropDiskInColumn(2))
+    XCTAssertNoThrow(try game.dropDiskInColumn(2))
+    XCTAssertNoThrow(try game.dropDiskInColumn(2))
+    XCTAssertNoThrow(try game.dropDiskInColumn(3))
+    XCTAssertNoThrow(try game.dropDiskInColumn(2))
+    XCTAssertNoThrow(try game.dropDiskInColumn(3))
+    XCTAssertNoThrow(try game.dropDiskInColumn(2))
+    XCTAssertNoThrow(try game.dropDiskInColumn(3))
+    
+    game.statusHandler = { status in
+      switch status {
+      case .finished(let winner):
+        XCTAssertNotNil(winner)
+      default:
+        XCTAssertTrue(false, "testGameIsFourInRow: Error")
+      }
+    }
+    
+    XCTAssertNoThrow(try game.dropDiskInColumn(2))
   }
 }
