@@ -50,13 +50,13 @@ class Game {
   }
   
   public func dropDiskInColumn(_ column: Int) throws {
-    guard let emptySlot = self.emptyRow(in: column) else {
+    guard let row = self.emptyRow(in: column) else {
       throw Error.columnFull
     }
 
     let disk = self.activePlayer == self.playerOne ? 1 : 2
 
-    self.grid.value![column][emptySlot] = disk
+    self.grid.value![column][row] = disk
   }
   
   // MARK: - Helpers
@@ -65,16 +65,6 @@ class Game {
     return self.activePlayer == self.playerOne ? self.playerTwo : self.playerOne
   }
   
-  private func isStart() -> Bool {
-    for column in self.grid.value! {
-      if column.contains(where: { $0 != 0 } ) {
-        return false
-      }
-    }
-    
-    return true
-  }
-
   private func isFinished() -> Bool {
     for column in self.grid.value! {
       if column.contains(where: { $0 == 0 } ) {
@@ -96,10 +86,9 @@ class Game {
     
     for column in 0..<width { // Iterate on columns from left to right
       for row in 0..<height { // Iterate on rows in column from bottom to top
-        
         let slot = grid[column][row]
         
-        if slot == emptySlot {
+        guard slot != emptySlot else {
           continue
         }
         
@@ -108,7 +97,7 @@ class Game {
           slot == grid[column][row + 1] &&
           slot == grid[column][row + 2] &&
           slot == grid[column][row + 3] {
-          print(grid)
+          print("vertical: \(self.grid.value!)")
           return true
         }
         
@@ -117,7 +106,7 @@ class Game {
           if slot == grid[column + 1][row] &&
             slot == grid[column + 2][row] &&
             slot == grid[column + 3][row] {
-            print(grid)
+            print("horizontal: \(self.grid.value!)")
             return true
           }
         }
@@ -144,7 +133,7 @@ class Game {
 // MARK: - Factory
 
 extension Game {
-  private func makeInitialGrid() -> [[Int]] { // 0, 1 och 2 (player 1 och 2)
+  private func makeInitialGrid() -> [[Int]] {
     return Array(
       repeating: Array(
         repeating: 0,
