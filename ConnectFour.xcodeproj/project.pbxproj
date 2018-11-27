@@ -16,10 +16,6 @@
 		182287C721A8A5690053CCC0 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182287C521A8A5600053CCC0 /* Game.swift */; };
 		182287CB21A9A5CD0053CCC0 /* GameModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182287CA21A9A5CD0053CCC0 /* GameModels.swift */; };
 		182287CC21A9A5FF0053CCC0 /* GameModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182287CA21A9A5CD0053CCC0 /* GameModels.swift */; };
-		182287CF21A9A74B0053CCC0 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182287CE21A9A74B0053CCC0 /* Observable.swift */; };
-		182287D221A9A76B0053CCC0 /* String+Pointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182287D121A9A76B0053CCC0 /* String+Pointer.swift */; };
-		182287D321A9B83C0053CCC0 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182287CE21A9A74B0053CCC0 /* Observable.swift */; };
-		182287D421A9B83F0053CCC0 /* String+Pointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182287D121A9A76B0053CCC0 /* String+Pointer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,8 +40,6 @@
 		182287BB21A8A2710053CCC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		182287C521A8A5600053CCC0 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		182287CA21A9A5CD0053CCC0 /* GameModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModels.swift; sourceTree = "<group>"; };
-		182287CE21A9A74B0053CCC0 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
-		182287D121A9A76B0053CCC0 /* String+Pointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Pointer.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,8 +87,6 @@
 				182287AB21A8A2710053CCC0 /* Assets.xcassets */,
 				182287AD21A8A2710053CCC0 /* LaunchScreen.storyboard */,
 				182287C421A8A53E0053CCC0 /* Core */,
-				182287D021A9A75B0053CCC0 /* Extensions */,
-				182287CD21A9A7340053CCC0 /* Utilities */,
 			);
 			path = ConnectFour;
 			sourceTree = "<group>";
@@ -115,22 +107,6 @@
 				182287CA21A9A5CD0053CCC0 /* GameModels.swift */,
 			);
 			path = Core;
-			sourceTree = "<group>";
-		};
-		182287CD21A9A7340053CCC0 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				182287CE21A9A74B0053CCC0 /* Observable.swift */,
-			);
-			path = Utilities;
-			sourceTree = "<group>";
-		};
-		182287D021A9A75B0053CCC0 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				182287D121A9A76B0053CCC0 /* String+Pointer.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,9 +209,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				182287D221A9A76B0053CCC0 /* String+Pointer.swift in Sources */,
 				182287A721A8A2700053CCC0 /* ViewController.swift in Sources */,
-				182287CF21A9A74B0053CCC0 /* Observable.swift in Sources */,
 				182287A521A8A2700053CCC0 /* AppDelegate.swift in Sources */,
 				182287CB21A9A5CD0053CCC0 /* GameModels.swift in Sources */,
 				182287C621A8A5600053CCC0 /* Game.swift in Sources */,
@@ -246,11 +220,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				182287D321A9B83C0053CCC0 /* Observable.swift in Sources */,
 				182287C721A8A5690053CCC0 /* Game.swift in Sources */,
 				182287CC21A9A5FF0053CCC0 /* GameModels.swift in Sources */,
 				182287BA21A8A2710053CCC0 /* CoreTests.swift in Sources */,
-				182287D421A9B83F0053CCC0 /* String+Pointer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
