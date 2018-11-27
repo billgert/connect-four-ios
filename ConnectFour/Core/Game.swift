@@ -12,7 +12,9 @@ class Game {
 
   private var activePlayer: Player?
   
-  private var grid = Observable<[[Int]]>(value: [[]])
+  private var grid: [[Int]] = [[]] {
+    didSet { self.update() }
+  }
 
   private let columns: Int
   private let rows: Int
@@ -22,17 +24,6 @@ class Game {
   init(columns: Int, rows: Int) {
     self.columns = columns
     self.rows = rows
-
-    self.grid.subscribe { [unowned self] grid in
-      if self.isFourInRow() {
-        self.statusHandler(.finished(winner: self.activePlayer))
-      } else if self.isFinished() {
-        self.statusHandler(.finished(winner: nil))
-      } else {
-        self.activePlayer = self.switchActivePlayer()
-        self.statusHandler(.active(self.activePlayer!))
-      }
-    }
   }
   
   // MARK: - Public Functions
@@ -46,7 +37,7 @@ class Game {
       throw Error.noColumns
     }
     
-    self.grid.value = self.makeInitialGrid()
+    self.grid = self.makeInitialGrid()
   }
   
   public func dropDiskInColumn(_ column: Int) throws {
@@ -56,17 +47,28 @@ class Game {
 
     let disk = self.activePlayer == self.playerOne ? 1 : 2
 
-    self.grid.value![column][row] = disk
+    self.grid[column][row] = disk
   }
   
   // MARK: - Helpers
+  
+  private func update() {
+    if self.isFourInRow() {
+      self.statusHandler(.finished(winner: self.activePlayer))
+    } else if self.isFinished() {
+      self.statusHandler(.finished(winner: nil)) // test
+    } else {
+      self.activePlayer = self.switchActivePlayer()
+      self.statusHandler(.active(self.activePlayer!)) // test
+    }
+  }
   
   private func switchActivePlayer() -> Player? {
     return self.activePlayer == self.playerOne ? self.playerTwo : self.playerOne
   }
   
   private func isFinished() -> Bool {
-    for column in self.grid.value! {
+    for column in self.grid {
       if column.contains(where: { $0 == 0 } ) {
         return false
       }
@@ -80,13 +82,9 @@ class Game {
     let width = self.columns
     let emptySlot = 0
     
-    guard let grid = self.grid.value else {
-      return false
-    }
-    
     for column in 0..<width { // Iterate on columns from left to right
       for row in 0..<height { // Iterate on rows in column from bottom to top
-        let slot = grid[column][row]
+        let slot = self.grid[column][row]
         
         guard slot != emptySlot else {
           continue
@@ -94,19 +92,19 @@ class Game {
         
          // Vertical (up)
         if row + 3 < self.rows &&
-          slot == grid[column][row + 1] &&
-          slot == grid[column][row + 2] &&
-          slot == grid[column][row + 3] {
-          print("vertical: \(self.grid.value!)")
+          slot == self.grid[column][row + 1] &&
+          slot == self.grid[column][row + 2] &&
+          slot == self.grid[column][row + 3] {
+          print("vertical: \(self.grid)")
           return true
         }
         
         if column + 3 < self.columns {
           // Horizontal (right)
-          if slot == grid[column + 1][row] &&
-            slot == grid[column + 2][row] &&
-            slot == grid[column + 3][row] {
-            print("horizontal: \(self.grid.value!)")
+          if slot == self.grid[column + 1][row] &&
+            slot == self.grid[column + 2][row] &&
+            slot == self.grid[column + 3][row] {
+            print("horizontal: \(self.grid)")
             return true
           }
         }
@@ -120,7 +118,7 @@ class Game {
     let height = self.rows
 
     for row in 0..<height {
-      let slot = self.grid.value![column][row]
+      let slot = self.grid[column][row]
       if slot == 0 {
         return row
       }
