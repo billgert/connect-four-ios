@@ -17,6 +17,4 @@ class BoardTests: XCTestCase {
     
     XCTAssertNotNil(cellModel.color)
   }
-  
-  
 }

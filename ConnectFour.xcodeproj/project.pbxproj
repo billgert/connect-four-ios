@@ -16,6 +16,8 @@
 		182287C721A8A5690053CCC0 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182287C521A8A5600053CCC0 /* Game.swift */; };
 		182287CB21A9A5CD0053CCC0 /* GameError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182287CA21A9A5CD0053CCC0 /* GameError.swift */; };
 		182287CC21A9A5FF0053CCC0 /* GameError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182287CA21A9A5CD0053CCC0 /* GameError.swift */; };
+		185AA7E821AEF87900C9E8B9 /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185AA7E721AEF87900C9E8B9 /* TypeAliases.swift */; };
+		185AA7E921AEF87900C9E8B9 /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185AA7E721AEF87900C9E8B9 /* TypeAliases.swift */; };
 		18B0E44721AEBC380073E8F1 /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0E44621AEBC380073E8F1 /* BoardViewModel.swift */; };
 		18B0E44821AEBC380073E8F1 /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0E44621AEBC380073E8F1 /* BoardViewModel.swift */; };
 		18B0E44E21AEBD610073E8F1 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0E44D21AEBD610073E8F1 /* Observable.swift */; };
@@ -63,6 +65,7 @@
 		182287BB21A8A2710053CCC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		182287C521A8A5600053CCC0 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		182287CA21A9A5CD0053CCC0 /* GameError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameError.swift; sourceTree = "<group>"; };
+		185AA7E721AEF87900C9E8B9 /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 		18B0E44621AEBC380073E8F1 /* BoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewModel.swift; sourceTree = "<group>"; };
 		18B0E44D21AEBD610073E8F1 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		18B0E45021AEBD6E0073E8F1 /* String+Pointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Pointer.swift"; sourceTree = "<group>"; };
@@ -152,8 +155,8 @@
 		18B0E44521AEBC1C0073E8F1 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				18B0E45321AECA4C0073E8F1 /* Start */,
 				18B0E44A21AEBC4D0073E8F1 /* Board */,
+				18B0E45321AECA4C0073E8F1 /* Start */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				18B0E44D21AEBD610073E8F1 /* Observable.swift */,
+				185AA7E721AEF87900C9E8B9 /* TypeAliases.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -336,6 +340,7 @@
 				18B0E46A21AEE59C0073E8F1 /* NetworkService.swift in Sources */,
 				182287CB21A9A5CD0053CCC0 /* GameError.swift in Sources */,
 				18B0E46321AEE3380073E8F1 /* Configuration.swift in Sources */,
+				185AA7E821AEF87900C9E8B9 /* TypeAliases.swift in Sources */,
 				182287C621A8A5600053CCC0 /* Game.swift in Sources */,
 				18B0E46D21AEE7480073E8F1 /* BoardGridCellModel.swift in Sources */,
 				18B0E44E21AEBD610073E8F1 /* Observable.swift in Sources */,
@@ -358,6 +363,7 @@
 				18B0E45A21AECFA00073E8F1 /* Player.swift in Sources */,
 				182287CC21A9A5FF0053CCC0 /* GameError.swift in Sources */,
 				18B0E46821AEE5940073E8F1 /* NavigationService.swift in Sources */,
+				185AA7E921AEF87900C9E8B9 /* TypeAliases.swift in Sources */,
 				182287BA21A8A2710053CCC0 /* CoreTests.swift in Sources */,
 				18B0E44821AEBC380073E8F1 /* BoardViewModel.swift in Sources */,
 				18B0E46021AED8E80073E8F1 /* GameDisk.swift in Sources */,

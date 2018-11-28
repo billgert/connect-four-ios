@@ -9,7 +9,7 @@ class BoardViewModel {
   public let currentPlayerTitle = Observable<String>()
   public let currentPlayerTitleColor = Observable<String>()
   
-  public var gridSectionCellModels: [[BoardGridCellModel]] = [[]]
+  public var gridSectionCellModels: Array2D<BoardGridCellModel> = [[]]
 
   public var updateHandler: () -> () = {}
   

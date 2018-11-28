@@ -1,7 +1,5 @@
 import Foundation
 
-typealias GameGrid = [[Int]]
-
 class Game {
   // MARK: - Public Properties
   
@@ -11,7 +9,7 @@ class Game {
 
   private var activePlayer: Player?
   
-  private var grid: GameGrid = [[]] {
+  private var grid: Array2D<Int> = [[]] {
     didSet { self.update() }
   }
 
@@ -32,7 +30,7 @@ class Game {
   // MARK: - Public Functions
   
   @discardableResult
-  public func start() throws -> GameGrid {
+  public func start() throws -> Array2D<Int> {
     guard self.columns > 0 else {
       throw Error.noColumns
     }
@@ -167,7 +165,7 @@ class Game {
 // MARK: - Factory
 
 extension Game {
-  private func makeInitialGrid() -> GameGrid {
+  private func makeInitialGrid() -> Array2D<Int> {
     return Array(
       repeating: Array(
         repeating: 0,
