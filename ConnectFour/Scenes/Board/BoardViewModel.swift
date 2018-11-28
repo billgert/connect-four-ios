@@ -1,14 +1,14 @@
 import Foundation
 
-struct BoardViewModel {
+class BoardViewModel {
   // MARK: - Output
   
-  public let restartButtonIsHidden = Observable<Bool>(value: true) // hide on statusHandler
+  public let restartButtonIsHidden = Observable<Bool>(value: true)
   public let errorMessage = Observable<String>()
-  public let winnerMessage = Observable<String>() // based on statusHandler
-  public let currentPlayerTitle = Observable<String>() // based on statusHandler
-  public let currentPlayerTitleColor = Observable<String>() // based on statusHandler
-  public let gridSectionCellModels = Observable<[[GridCellModel]]>()
+  public let finishedMessage = Observable<String>()
+  public let currentPlayerTitle = Observable<String>()
+  public let currentPlayerTitleColor = Observable<String>()
+  public let gridSectionCellModels = Observable<[[BoardGridCellModel]]>()
 
   // MARK: - Private Properties
   
@@ -18,17 +18,36 @@ struct BoardViewModel {
   
   init(game: Game) {
     self.game = game
+
+    self.game.statusHandler = { [unowned self] status in
+      switch status {
+      case .active(let player):
+        self.restartButtonIsHidden.value = true
+        self.currentPlayerTitle.value = "Active player: \(player.name)"
+        self.currentPlayerTitleColor.value = player.color
+      case .finished(winner: let player):
+        self.restartButtonIsHidden.value = false
+        if let player = player {
+          self.finishedMessage.value = "Winner: \(player.name)"
+        } else {
+          self.finishedMessage.value = "Draw"
+        }
+      }
+    }
     
-    // 1. Listen for future changes in statusHandler
-    // 2. Start the game
+    self.startGame()
   }
   
   // MARK: - Input
   
   public func didSelectSection(_ section: Int) {
-    // 1. Try and insert disk in column (section)
-    // 2. If it throws an error set it on errorMessage
-    // 3. If not update model state in gridSectionCellModels with returned disk
+    do {
+      let disk = try self.game.dropDiskInColumn(section)
+      let cellModel = self.gridSectionCellModels.value![disk.coordinate.column][disk.coordinate.row]
+      cellModel.color = disk.color // is this enough to trigger an update? Else make updateHandler. TEST
+    } catch {
+      self.errorMessage.value = error.localizedDescription
+    }
   }
   
   public func didTapRestartButton() {
@@ -40,14 +59,13 @@ struct BoardViewModel {
   private func startGame() {
     do {
       let grid = try self.game.start()
-      // 2. Setup models for grid
+      self.gridSectionCellModels.value = grid.map { column in
+        return column.map { _ in BoardGridCellModel() }
+      }
     } catch {
       self.errorMessage.value = error.localizedDescription
     }
   }
 }
 
-struct GridCellModel {
-  public var color: String
-}
 

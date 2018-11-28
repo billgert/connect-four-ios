@@ -36,6 +36,8 @@
 		18B0E46821AEE5940073E8F1 /* NavigationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0E46621AEE5940073E8F1 /* NavigationService.swift */; };
 		18B0E46A21AEE59C0073E8F1 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0E46921AEE59C0073E8F1 /* NetworkService.swift */; };
 		18B0E46B21AEE59C0073E8F1 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0E46921AEE59C0073E8F1 /* NetworkService.swift */; };
+		18B0E46D21AEE7480073E8F1 /* BoardGridCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0E46C21AEE7480073E8F1 /* BoardGridCellModel.swift */; };
+		18B0E46E21AEE7480073E8F1 /* BoardGridCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0E46C21AEE7480073E8F1 /* BoardGridCellModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,7 @@
 		18B0E46221AEE3380073E8F1 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		18B0E46621AEE5940073E8F1 /* NavigationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationService.swift; sourceTree = "<group>"; };
 		18B0E46921AEE59C0073E8F1 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		18B0E46C21AEE7480073E8F1 /* BoardGridCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardGridCellModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				18B0E44621AEBC380073E8F1 /* BoardViewModel.swift */,
+				18B0E46C21AEE7480073E8F1 /* BoardGridCellModel.swift */,
 			);
 			path = Board;
 			sourceTree = "<group>";
@@ -330,6 +334,7 @@
 				182287CB21A9A5CD0053CCC0 /* GameError.swift in Sources */,
 				18B0E46321AEE3380073E8F1 /* Configuration.swift in Sources */,
 				182287C621A8A5600053CCC0 /* Game.swift in Sources */,
+				18B0E46D21AEE7480073E8F1 /* BoardGridCellModel.swift in Sources */,
 				18B0E44E21AEBD610073E8F1 /* Observable.swift in Sources */,
 				18B0E45C21AED8B20073E8F1 /* GameStatus.swift in Sources */,
 				18B0E45921AECFA00073E8F1 /* Player.swift in Sources */,
@@ -354,6 +359,7 @@
 				18B0E44821AEBC380073E8F1 /* BoardViewModel.swift in Sources */,
 				18B0E46021AED8E80073E8F1 /* GameDisk.swift in Sources */,
 				18B0E46B21AEE59C0073E8F1 /* NetworkService.swift in Sources */,
+				18B0E46E21AEE7480073E8F1 /* BoardGridCellModel.swift in Sources */,
 				18B0E46421AEE3380073E8F1 /* Configuration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

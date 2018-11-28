@@ -62,10 +62,7 @@ class CoreTests: XCTestCase {
   
   func testGameDropDiskColumnIsFull() {
     let game = Game(columns: 7, rows: 6, players: (self.playerOne, self.playerTwo))
-    
-    game.playerOne = self.playerOne
-    game.playerTwo = self.playerTwo
-  
+
     do {
       try game.start()
       try game.dropDiskInColumn(2)

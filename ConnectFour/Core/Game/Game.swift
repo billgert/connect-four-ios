@@ -31,6 +31,7 @@ class Game {
   
   // MARK: - Public Functions
   
+  @discardableResult
   public func start() throws -> GameGrid {
     guard self.columns > 0 else {
       throw Error.noColumns
@@ -41,6 +42,7 @@ class Game {
     return self.grid
   }
   
+  @discardableResult
   public func dropDiskInColumn(_ column: Int) throws -> Disk {
     guard let player = self.activePlayer else {
       throw Error.activePlayer
