@@ -16,10 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   private var rootNavigator: GameNavigator!
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    
     self.rootNavigator = GameNavigator(navigationController: UINavigationController(),
                                        window: UIWindow(frame: UIScreen.main.bounds))
-
+    self.rootNavigator.navigate(to: .start)
+    
     return true
   }
 }

@@ -15,7 +15,7 @@ class GameNavigator: Navigator {
     self.navigationController = navigationController
     
     self.window = window
-    self.window.rootViewController = self.makeViewController(for: .start)
+    self.window.rootViewController = self.navigationController
     self.window.makeKeyAndVisible()
   }
   
