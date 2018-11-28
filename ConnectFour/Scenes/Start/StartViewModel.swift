@@ -1,6 +1,6 @@
 import Foundation
 
-class StartViewModel {
+class StartViewModel: ViewModel {
   // MARK: - Output
   
   public let playerOneTitle = Observable<String>(value: "Player 1 Loading...")
@@ -20,6 +20,8 @@ class StartViewModel {
   init(_ networkService: NetworkService<BlinkistEndPoint>, _ navigator: GameNavigator) {
     self.networkService = networkService
     self.navigator = navigator
+    
+    super.init()
     
     self.requestConfiguration { configuration in
       self.players.value = (configuration.playerOne(), configuration.playerTwo())
