@@ -1,18 +1,15 @@
 import Foundation
 
 extension Game {
-  enum Status {
-    case active(Player)
-    case finished(winner: Player?)
-  }
-  
   enum Error: LocalizedError {
-    case players
+    case activePlayer
     case noColumns
     case columnFull
 
     var errorDescription: String? {
       switch self {
+      case .activePlayer:
+        return NSLocalizedString("There is no active player.", comment: "")
       case .noColumns:
         return NSLocalizedString("There are no columns for building the game.", comment: "")
       case .columnFull:
