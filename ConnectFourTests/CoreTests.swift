@@ -1,21 +1,13 @@
-//
-//  CoreTests.swift
-//  CoreTests
-//
-//  Created by Patrik Billgert on 2018-11-23.
-//  Copyright © 2018 Patrik Billgert. All rights reserved.
-//
-
 import XCTest
 @testable import ConnectFour
 
 class CoreTests: XCTestCase {
-  var playerOne: Game.Player!
-  var playerTwo: Game.Player!
+  var playerOne: Player!
+  var playerTwo: Player!
   
   override func setUp() {
-    self.playerOne = Game.Player(name: "Sue", color: "#FF0000")
-    self.playerTwo = Game.Player(name: "Henry", color: "#0000FF")
+    self.playerOne = Player(name: "Sue", color: "#FF0000")
+    self.playerTwo = Player(name: "Henry", color: "#0000FF")
   }
   
   override func tearDown() {
@@ -23,22 +15,11 @@ class CoreTests: XCTestCase {
     self.playerTwo = nil
   }
   
-  // MARK: - start()
-  
-  func testGameStartHasNoPlayers() {
-    let game = Game(columns: 7, rows: 6)
-    
-    XCTAssertThrowsError(try game.start()) { error in
-      XCTAssertEqual(error as! Game.Error, Game.Error.players)
-    }
-  }
-  
+  // MARK: - start
+
   func testGameStartHasNoColumns() {
-    let game = Game(columns: 0, rows: 0)
-    
-    game.playerOne = self.playerOne
-    game.playerTwo = self.playerTwo
-    
+    let game = Game(columns: 0, rows: 0, players: (self.playerOne, self.playerTwo))
+
     XCTAssertThrowsError(try game.start()) { error in
       XCTAssertEqual(error as! Game.Error, Game.Error.noColumns)
     }
@@ -47,11 +28,8 @@ class CoreTests: XCTestCase {
   // MARK: - dropDiskInColumn
   
   func testGameDropDiskSuccess() {
-    let game = Game(columns: 7, rows: 6)
+    let game = Game(columns: 7, rows: 6, players: (self.playerOne, self.playerTwo))
     
-    game.playerOne = self.playerOne
-    game.playerTwo = self.playerTwo
-
     do {
       try game.start()
       try game.dropDiskInColumn(2)
@@ -61,10 +39,7 @@ class CoreTests: XCTestCase {
   }
   
   func testGameDropMultipleDisksSuccess() {
-    let game = Game(columns: 7, rows: 6)
-    
-    game.playerOne = self.playerOne
-    game.playerTwo = self.playerTwo
+    let game = Game(columns: 7, rows: 6, players: (self.playerOne, self.playerTwo))
     
     do {
       try game.start()
@@ -78,11 +53,8 @@ class CoreTests: XCTestCase {
   }
   
   func testGameDropDiskColumnIsFull() {
-    let game = Game(columns: 7, rows: 6)
-    
-    game.playerOne = self.playerOne
-    game.playerTwo = self.playerTwo
-  
+    let game = Game(columns: 7, rows: 6, players: (self.playerOne, self.playerTwo))
+
     do {
       try game.start()
       try game.dropDiskInColumn(2)
@@ -103,10 +75,7 @@ class CoreTests: XCTestCase {
   // MARK: - statusHandler
   
   func testGameStatusHandlerIsFourInRowHorizontal() {
-    let game = Game(columns: 7, rows: 6)
-    
-    game.playerOne = self.playerOne
-    game.playerTwo = self.playerTwo
+    let game = Game(columns: 7, rows: 6, players: (self.playerOne, self.playerTwo))
     
     XCTAssertNoThrow(try game.start())
     XCTAssertNoThrow(try game.dropDiskInColumn(0))
@@ -129,11 +98,8 @@ class CoreTests: XCTestCase {
   }
   
   func testGameStatusHandlerIsFourInRowVertical() {
-    let game = Game(columns: 7, rows: 6)
+    let game = Game(columns: 7, rows: 6, players: (self.playerOne, self.playerTwo))
     
-    game.playerOne = self.playerOne
-    game.playerTwo = self.playerTwo
-  
     XCTAssertNoThrow(try game.start())
     XCTAssertNoThrow(try game.dropDiskInColumn(2))
     XCTAssertNoThrow(try game.dropDiskInColumn(2))
@@ -157,10 +123,7 @@ class CoreTests: XCTestCase {
   }
   
   func testGameStatusHandlerIsFourInRowDiagonalRight() {
-    let game = Game(columns: 7, rows: 6)
-    
-    game.playerOne = self.playerOne
-    game.playerTwo = self.playerTwo
+    let game = Game(columns: 7, rows: 6, players: (self.playerOne, self.playerTwo))
     
     XCTAssertNoThrow(try game.start())
     XCTAssertNoThrow(try game.dropDiskInColumn(6))
@@ -194,10 +157,7 @@ class CoreTests: XCTestCase {
   }
   
   func testGameStatusHandlerIsFourInRowDiagonalLeft() {
-    let game = Game(columns: 7, rows: 6)
-    
-    game.playerOne = self.playerOne
-    game.playerTwo = self.playerTwo
+    let game = Game(columns: 7, rows: 6, players: (self.playerOne, self.playerTwo))
     
     XCTAssertNoThrow(try game.start())
     XCTAssertNoThrow(try game.dropDiskInColumn(0))

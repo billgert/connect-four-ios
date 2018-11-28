@@ -1,53 +1,67 @@
 import Foundation
 
+typealias GameGrid = [[Int]]
+
 class Game {
   // MARK: - Public Properties
   
   public var statusHandler: (Status) -> () = { _ in }
   
-  public var playerOne: Player?
-  public var playerTwo: Player?
-  
   // MARK: - Private Properties
 
   private var activePlayer: Player?
   
-  private var grid: [[Int]] = [[]] {
+  private var grid: GameGrid = [[]] {
     didSet { self.update() }
   }
 
   private let columns: Int
   private let rows: Int
+  private let playerOne: Player
+  private let playerTwo: Player
   
   // MARK: - Lifecycle
   
-  init(columns: Int, rows: Int) {
+  init(columns: Int, rows: Int, players: (Player, Player)) {
     self.columns = columns
     self.rows = rows
+    self.playerOne = players.0
+    self.playerTwo = players.1
   }
   
   // MARK: - Public Functions
   
-  public func start() throws {
-    guard self.playerOne != nil && self.playerTwo != nil else {
-      throw Error.players
-    }
-    
+  @discardableResult
+  public func start() throws -> GameGrid {
     guard self.columns > 0 else {
       throw Error.noColumns
     }
     
     self.grid = self.makeInitialGrid()
+    
+    return self.grid
   }
   
-  public func dropDiskInColumn(_ column: Int) throws {
+  @discardableResult
+  public func dropDiskInColumn(_ column: Int) throws -> Disk {
+    guard let player = self.activePlayer else {
+      throw Error.activePlayer
+    }
+
     guard let row = self.emptyRow(in: column) else {
       throw Error.columnFull
     }
 
-    let disk = self.activePlayer == self.playerOne ? 1 : 2
-
-    self.grid[column][row] = disk
+    let disk = Disk(
+      coordinate: Disk.Coordinate(column: column, row: row),
+      color: player.color
+    )
+    
+    let slot = player == self.playerOne ? 1 : 2
+    
+    self.grid[column][row] = slot
+    
+    return disk
   }
   
   // MARK: - State Logic
@@ -153,7 +167,7 @@ class Game {
 // MARK: - Factory
 
 extension Game {
-  private func makeInitialGrid() -> [[Int]] {
+  private func makeInitialGrid() -> GameGrid {
     return Array(
       repeating: Array(
         repeating: 0,
