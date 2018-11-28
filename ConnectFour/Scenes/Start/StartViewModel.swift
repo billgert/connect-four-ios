@@ -6,6 +6,7 @@ class StartViewModel: ViewModel {
   public let playerOneTitle = Observable<String>(value: "Player 1 Loading...")
   public let playerTwoTitle = Observable<String>(value: "Player 2 Loading...")
   
+  public let startButtonTitle: String = "Start"
   public let startButtonIsEnabled = Observable<Bool>(value: false)
   
   // MARK: - Private Properties
@@ -48,14 +49,16 @@ class StartViewModel: ViewModel {
     self.networkService.request(
       endpoint: .getConfiguration,
       modelType: [Configuration].self) { [weak self] result in
-        switch result {
-        case .failure(let error):
-          self?.errorMessage.value = error.localizedDescription
-        case .success(let configurations):
-          if let configuration = configurations.first {
-            completion(configuration)
-          } else {
-            self?.errorMessage.value = "No configurations found"
+        DispatchQueue.main.async {
+          switch result {
+          case .failure(let error):
+            self?.errorMessage.value = error.localizedDescription
+          case .success(let configurations):
+            if let configuration = configurations.first {
+              completion(configuration)
+            } else {
+              self?.errorMessage.value = "No configurations found"
+            }
           }
         }
     }
