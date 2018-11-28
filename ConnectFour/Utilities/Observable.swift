@@ -24,11 +24,11 @@ class Observable<T> {
   }
   
   public func subscribe(_ object: AnyObject? = nil,
-                        triggerCallback: Bool = false,
+                        trigger: Bool = false,
                         callback: @escaping ObservableCallback) {
     let subscription = Subscription(identifier: String.pointer(object), callback: callback)
     self.subscriptions.append(subscription)
-    if triggerCallback {
+    if trigger {
       guard let value = self.value else { return }
       subscription.callback(value)
     }

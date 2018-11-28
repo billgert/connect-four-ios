@@ -1,14 +1,13 @@
 import Foundation
 
-class BoardViewModel {
+class BoardViewModel: ViewModel {
   // MARK: - Output
   
   public let restartButtonIsHidden = Observable<Bool>(value: true)
-  public let errorMessage = Observable<String>()
   public let finishedMessage = Observable<String>()
   public let currentPlayerTitle = Observable<String>()
   public let currentPlayerTitleColor = Observable<String>()
-  
+
   public var gridSectionCellModels: Array2D<BoardGridCellModel> = [[]]
 
   public var updateHandler: () -> () = {}
@@ -22,6 +21,8 @@ class BoardViewModel {
   init(game: Game) {
     self.game = game
 
+    super.init()
+    
     self.game.statusHandler = { [unowned self] status in
       switch status {
       case .active(let player):
