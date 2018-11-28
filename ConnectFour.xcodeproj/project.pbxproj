@@ -19,6 +19,8 @@
 		185AA7E821AEF87900C9E8B9 /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185AA7E721AEF87900C9E8B9 /* TypeAliases.swift */; };
 		185AA7E921AEF87900C9E8B9 /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185AA7E721AEF87900C9E8B9 /* TypeAliases.swift */; };
 		185AA7EB21AEF97F00C9E8B9 /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185AA7EA21AEF97F00C9E8B9 /* NetworkTests.swift */; };
+		185AA7EE21AEFB2800C9E8B9 /* BlinkistEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185AA7ED21AEFB2800C9E8B9 /* BlinkistEndPoint.swift */; };
+		185AA7EF21AEFB2800C9E8B9 /* BlinkistEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185AA7ED21AEFB2800C9E8B9 /* BlinkistEndPoint.swift */; };
 		18B0E44721AEBC380073E8F1 /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0E44621AEBC380073E8F1 /* BoardViewModel.swift */; };
 		18B0E44821AEBC380073E8F1 /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0E44621AEBC380073E8F1 /* BoardViewModel.swift */; };
 		18B0E44E21AEBD610073E8F1 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0E44D21AEBD610073E8F1 /* Observable.swift */; };
@@ -68,6 +70,7 @@
 		182287CA21A9A5CD0053CCC0 /* GameError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameError.swift; sourceTree = "<group>"; };
 		185AA7E721AEF87900C9E8B9 /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 		185AA7EA21AEF97F00C9E8B9 /* NetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTests.swift; sourceTree = "<group>"; };
+		185AA7ED21AEFB2800C9E8B9 /* BlinkistEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkistEndPoint.swift; sourceTree = "<group>"; };
 		18B0E44621AEBC380073E8F1 /* BoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewModel.swift; sourceTree = "<group>"; };
 		18B0E44D21AEBD610073E8F1 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		18B0E45021AEBD6E0073E8F1 /* String+Pointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Pointer.swift"; sourceTree = "<group>"; };
@@ -155,6 +158,15 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		185AA7EC21AEFB1100C9E8B9 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				18B0E46921AEE59C0073E8F1 /* NetworkService.swift */,
+				185AA7ED21AEFB2800C9E8B9 /* BlinkistEndPoint.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		18B0E44521AEBC1C0073E8F1 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,7 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				18B0E46621AEE5940073E8F1 /* NavigationService.swift */,
-				18B0E46921AEE59C0073E8F1 /* NetworkService.swift */,
+				185AA7EC21AEFB1100C9E8B9 /* Networking */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -343,6 +355,7 @@
 				18B0E46A21AEE59C0073E8F1 /* NetworkService.swift in Sources */,
 				182287CB21A9A5CD0053CCC0 /* GameError.swift in Sources */,
 				18B0E46321AEE3380073E8F1 /* Configuration.swift in Sources */,
+				185AA7EE21AEFB2800C9E8B9 /* BlinkistEndPoint.swift in Sources */,
 				185AA7E821AEF87900C9E8B9 /* TypeAliases.swift in Sources */,
 				182287C621A8A5600053CCC0 /* Game.swift in Sources */,
 				18B0E46D21AEE7480073E8F1 /* BoardGridCellModel.swift in Sources */,
@@ -369,6 +382,7 @@
 				185AA7EB21AEF97F00C9E8B9 /* NetworkTests.swift in Sources */,
 				185AA7E921AEF87900C9E8B9 /* TypeAliases.swift in Sources */,
 				182287BA21A8A2710053CCC0 /* GameTests.swift in Sources */,
+				185AA7EF21AEFB2800C9E8B9 /* BlinkistEndPoint.swift in Sources */,
 				18B0E44821AEBC380073E8F1 /* BoardViewModel.swift in Sources */,
 				18B0E46021AED8E80073E8F1 /* GameDisk.swift in Sources */,
 				18B0E47021AEEB250073E8F1 /* BoardTests.swift in Sources */,
