@@ -172,8 +172,8 @@
 		182287C421A8A53E0053CCC0 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				18B0E45721AECF900073E8F1 /* Models */,
 				18B0E44921AEBC450073E8F1 /* Game */,
+				18B0E45721AECF900073E8F1 /* Models */,
 				185AA7EC21AEFB1100C9E8B9 /* Networking */,
 			);
 			path = Core;

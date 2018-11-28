@@ -3,11 +3,15 @@ import Foundation
 class StartViewModel: ViewModel {
   // MARK: - Output
   
-  public let playerOneTitle = Observable<String>(value: "Player 1 Loading...")
-  public let playerTwoTitle = Observable<String>(value: "Player 2 Loading...")
+  public let playerOneText = Observable<String>(value: "Loading")
+  public let playerOneTextColor = Observable<String>(value: "#75787B")
+  
+  public let playerTwoText = Observable<String>(value: "Loading")
+  public let playerTwoTextColor = Observable<String>(value: "#75787B")
   
   public let startButtonTitle: String = "Start"
-  public let startButtonIsEnabled = Observable<Bool>(value: false)
+  public let startButtonIsUserInteractionEnabled = Observable<Bool>(value: false)
+  public let startButtonBackgroundColor = Observable<String>(value: "#75787B")
   
   // MARK: - Private Properties
   
@@ -29,9 +33,12 @@ class StartViewModel: ViewModel {
     }
     
     self.players.subscribe { [weak self] players in
-      self?.playerOneTitle.value = "\(players.0.name) is ready"
-      self?.playerTwoTitle.value = "\(players.1.name) is ready"
-      self?.startButtonIsEnabled.value = true
+      self?.playerOneText.value = "\(players.0.name) ✔️"
+      self?.playerOneTextColor.value = players.0.color
+      self?.playerTwoText.value = "\(players.1.name) ✔️"
+      self?.playerTwoTextColor.value = players.1.color
+      self?.startButtonIsUserInteractionEnabled.value = true
+      self?.startButtonBackgroundColor.value = "#FF0090"
     }
   }
   
