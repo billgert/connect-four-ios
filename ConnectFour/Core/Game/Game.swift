@@ -5,8 +5,8 @@ class Game {
   
   public var statusHandler: (Status) -> () = { _ in }
   
-  public var playerOne: Player?
-  public var playerTwo: Player?
+  public let playerOne: Player
+  public let playerTwo: Player
   
   // MARK: - Private Properties
 
@@ -21,18 +21,16 @@ class Game {
   
   // MARK: - Lifecycle
   
-  init(columns: Int, rows: Int) {
+  init(columns: Int, rows: Int, players: (Player, Player)) {
     self.columns = columns
     self.rows = rows
+    self.playerOne = players.0
+    self.playerTwo = players.1
   }
   
   // MARK: - Public Functions
   
   public func start() throws {
-    guard self.playerOne != nil && self.playerTwo != nil else {
-      throw Error.players
-    }
-    
     guard self.columns > 0 else {
       throw Error.noColumns
     }
