@@ -10,8 +10,18 @@ import XCTest
 @testable import ConnectFour
 
 class CoreTests: XCTestCase {
-  let playerOne = Game.Player(name: "Sue", color: "#FF0000")
-  let playerTwo = Game.Player(name: "Henry", color: "#0000FF")
+  var playerOne: Game.Player!
+  var playerTwo: Game.Player!
+  
+  override func setUp() {
+    self.playerOne = Game.Player(name: "Sue", color: "#FF0000")
+    self.playerTwo = Game.Player(name: "Henry", color: "#0000FF")
+  }
+  
+  override func tearDown() {
+    self.playerOne = nil
+    self.playerTwo = nil
+  }
   
   // MARK: - start()
   
@@ -34,7 +44,7 @@ class CoreTests: XCTestCase {
     }
   }
   
-  // MARK: - dropDiskInColumn(_ column: Int)
+  // MARK: - dropDiskInColumn
   
   func testGameDropDiskSuccess() {
     let game = Game(columns: 7, rows: 6)
@@ -67,7 +77,7 @@ class CoreTests: XCTestCase {
     }
   }
   
-  func testGameDropDiskInFullColumn() {
+  func testGameDropDiskColumnIsFull() {
     let game = Game(columns: 7, rows: 6)
     
     game.playerOne = self.playerOne
@@ -82,7 +92,7 @@ class CoreTests: XCTestCase {
       try game.dropDiskInColumn(2)
       try game.dropDiskInColumn(2)
     } catch {
-      XCTAssertTrue(false, "testGameDropDiskInFullColumn: Error")
+      XCTAssertTrue(false, "testGameDropDiskColumnIsFull: Error")
     }
 
     XCTAssertThrowsError(try game.dropDiskInColumn(2)) { error in
@@ -90,9 +100,9 @@ class CoreTests: XCTestCase {
     }
   }
   
-  // MARK: - isFourInRow()
+  // MARK: - statusHandler
   
-  func testGameIsFourInRowHorizontal() {
+  func testGameStatusHandlerIsFourInRowHorizontal() {
     let game = Game(columns: 7, rows: 6)
     
     game.playerOne = self.playerOne
@@ -111,14 +121,14 @@ class CoreTests: XCTestCase {
       case .finished(let winner):
         XCTAssertNotNil(winner)
       default:
-        XCTAssertTrue(false, "testGameIsFourInRow: Error")
+        XCTAssertTrue(false, "testGameStatusHandlerIsFourInRow: Error")
       }
     }
     
     XCTAssertNoThrow(try game.dropDiskInColumn(3))
   }
   
-  func testGameIsFourInRowVertical() {
+  func testGameStatusHandlerIsFourInRowVertical() {
     let game = Game(columns: 7, rows: 6)
     
     game.playerOne = self.playerOne
@@ -139,14 +149,14 @@ class CoreTests: XCTestCase {
       case .finished(let winner):
         XCTAssertNotNil(winner)
       default:
-        XCTAssertTrue(false, "testGameIsFourInRow: Error")
+        XCTAssertTrue(false, "testGameStatusHandlerIsFourInRow: Error")
       }
     }
     
     XCTAssertNoThrow(try game.dropDiskInColumn(2))
   }
   
-  func testGameIsFourInRowDiagonalRight() {
+  func testGameStatusHandlerIsFourInRowDiagonalRight() {
     let game = Game(columns: 7, rows: 6)
     
     game.playerOne = self.playerOne
@@ -176,14 +186,14 @@ class CoreTests: XCTestCase {
       case .finished(let winner):
         XCTAssertNotNil(winner)
       default:
-        XCTAssertTrue(false, "testGameIsFourInRow: Error")
+        XCTAssertTrue(false, "testGameStatusHandlerIsFourInRow: Error")
       }
     }
     
     XCTAssertNoThrow(try game.dropDiskInColumn(3))
   }
   
-  func testGameIsFourInRowDiagonalLeft() {
+  func testGameStatusHandlerIsFourInRowDiagonalLeft() {
     let game = Game(columns: 7, rows: 6)
     
     game.playerOne = self.playerOne
@@ -213,7 +223,7 @@ class CoreTests: XCTestCase {
       case .finished(let winner):
         XCTAssertNotNil(winner)
       default:
-        XCTAssertTrue(false, "testGameIsFourInRow: Error")
+        XCTAssertTrue(false, "testGameStatusHandlerIsFourInRow: Error")
       }
     }
     

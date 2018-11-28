@@ -50,22 +50,24 @@ class Game {
     self.grid[column][row] = disk
   }
   
-  // MARK: - Helpers
+  // MARK: - State Logic
   
   private func update() {
     if self.isFourInRow() {
       self.statusHandler(.finished(winner: self.activePlayer))
     } else if self.isFinished() {
-      self.statusHandler(.finished(winner: nil)) // test
+      self.statusHandler(.finished(winner: nil))
     } else {
       self.activePlayer = self.switchActivePlayer()
-      self.statusHandler(.active(self.activePlayer!)) // test
+      self.statusHandler(.active(self.activePlayer!))
     }
   }
   
   private func switchActivePlayer() -> Player? {
     return self.activePlayer == self.playerOne ? self.playerTwo : self.playerOne
   }
+  
+  // MARK: - Game Logic
   
   private func isFinished() -> Bool {
     for column in self.grid {
@@ -131,6 +133,8 @@ class Game {
 
     return false
   }
+  
+  // MARK: - Helpers
   
   private func emptyRow(in column: Int) -> Int? {
     let height = self.rows
