@@ -23,14 +23,14 @@ class StartViewModel: ViewModel {
     
     super.init()
     
-    self.requestConfiguration { configuration in
-      self.players.value = (configuration.playerOne(), configuration.playerTwo())
+    self.requestConfiguration { [weak self] configuration in
+      self?.players.value = (configuration.playerOne(), configuration.playerTwo())
     }
     
-    self.players.subscribe { players in
-      self.playerOneTitle.value = "\(players.0.name) is ready"
-      self.playerTwoTitle.value = "\(players.1.name) is ready"
-      self.startButtonIsEnabled.value = true
+    self.players.subscribe { [weak self] players in
+      self?.playerOneTitle.value = "\(players.0.name) is ready"
+      self?.playerTwoTitle.value = "\(players.1.name) is ready"
+      self?.startButtonIsEnabled.value = true
     }
   }
   
@@ -47,15 +47,15 @@ class StartViewModel: ViewModel {
   private func requestConfiguration(completion: @escaping (Configuration) -> Void) {
     self.networkService.request(
       endpoint: .getConfiguration,
-      modelType: [Configuration].self) { result in
+      modelType: [Configuration].self) { [weak self] result in
         switch result {
         case .failure(let error):
-          self.errorMessage.value = error.localizedDescription
+          self?.errorMessage.value = error.localizedDescription
         case .success(let configurations):
           if let configuration = configurations.first {
             completion(configuration)
           } else {
-            self.errorMessage.value = "No configurations found"
+            self?.errorMessage.value = "No configurations found"
           }
         }
     }
