@@ -17,7 +17,7 @@ class StartViewModel {
   
   // MARK: - Lifecycle
   
-  init(networkService: NetworkService<BlinkistEndPoint>, navigationService: NavigationService) {
+  init(_ networkService: NetworkService<BlinkistEndPoint>, _ navigationService: NavigationService) {
     self.networkService = networkService
     self.navigationService = navigationService
     

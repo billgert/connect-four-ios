@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		182287A521A8A2700053CCC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182287A421A8A2700053CCC0 /* AppDelegate.swift */; };
-		182287A721A8A2700053CCC0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182287A621A8A2700053CCC0 /* ViewController.swift */; };
 		182287AC21A8A2710053CCC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 182287AB21A8A2710053CCC0 /* Assets.xcassets */; };
 		182287AF21A8A2710053CCC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 182287AD21A8A2710053CCC0 /* LaunchScreen.storyboard */; };
 		182287BA21A8A2710053CCC0 /* GameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182287B921A8A2710053CCC0 /* GameTests.swift */; };
@@ -24,6 +23,8 @@
 		185AA7F221AEFCCE00C9E8B9 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185AA7F021AEFCCE00C9E8B9 /* NetworkRouter.swift */; };
 		185AA7F421AF085400C9E8B9 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185AA7F321AF085400C9E8B9 /* NetworkResult.swift */; };
 		185AA7F521AF085400C9E8B9 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185AA7F321AF085400C9E8B9 /* NetworkResult.swift */; };
+		185AA7F821AF0ECA00C9E8B9 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185AA7F721AF0ECA00C9E8B9 /* StartViewController.swift */; };
+		185AA7F921AF0ECF00C9E8B9 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185AA7F721AF0ECA00C9E8B9 /* StartViewController.swift */; };
 		18B0E44721AEBC380073E8F1 /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0E44621AEBC380073E8F1 /* BoardViewModel.swift */; };
 		18B0E44821AEBC380073E8F1 /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0E44621AEBC380073E8F1 /* BoardViewModel.swift */; };
 		18B0E44E21AEBD610073E8F1 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0E44D21AEBD610073E8F1 /* Observable.swift */; };
@@ -62,7 +63,6 @@
 /* Begin PBXFileReference section */
 		182287A121A8A2700053CCC0 /* ConnectFour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConnectFour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		182287A421A8A2700053CCC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		182287A621A8A2700053CCC0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		182287AB21A8A2710053CCC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		182287AE21A8A2710053CCC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		182287B021A8A2710053CCC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -75,6 +75,7 @@
 		185AA7ED21AEFB2800C9E8B9 /* BlinkistEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkistEndPoint.swift; sourceTree = "<group>"; };
 		185AA7F021AEFCCE00C9E8B9 /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
 		185AA7F321AF085400C9E8B9 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
+		185AA7F721AF0ECA00C9E8B9 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		18B0E44621AEBC380073E8F1 /* BoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewModel.swift; sourceTree = "<group>"; };
 		18B0E44D21AEBD610073E8F1 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		18B0E45021AEBD6E0073E8F1 /* String+Pointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Pointer.swift"; sourceTree = "<group>"; };
@@ -130,7 +131,6 @@
 			children = (
 				182287B021A8A2710053CCC0 /* Info.plist */,
 				182287A421A8A2700053CCC0 /* AppDelegate.swift */,
-				182287A621A8A2700053CCC0 /* ViewController.swift */,
 				182287AB21A8A2710053CCC0 /* Assets.xcassets */,
 				182287AD21A8A2710053CCC0 /* LaunchScreen.storyboard */,
 				182287C421A8A53E0053CCC0 /* Core */,
@@ -227,6 +227,7 @@
 		18B0E45321AECA4C0073E8F1 /* Start */ = {
 			isa = PBXGroup;
 			children = (
+				185AA7F721AF0ECA00C9E8B9 /* StartViewController.swift */,
 				18B0E45421AECA590073E8F1 /* StartViewModel.swift */,
 			);
 			path = Start;
@@ -360,7 +361,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				182287A721A8A2700053CCC0 /* ViewController.swift in Sources */,
 				18B0E45F21AED8E80073E8F1 /* GameDisk.swift in Sources */,
 				18B0E45521AECA590073E8F1 /* StartViewModel.swift in Sources */,
 				182287A521A8A2700053CCC0 /* AppDelegate.swift in Sources */,
@@ -375,6 +375,7 @@
 				18B0E44E21AEBD610073E8F1 /* Observable.swift in Sources */,
 				18B0E45C21AED8B20073E8F1 /* GameStatus.swift in Sources */,
 				18B0E45921AECFA00073E8F1 /* Player.swift in Sources */,
+				185AA7F821AF0ECA00C9E8B9 /* StartViewController.swift in Sources */,
 				18B0E46721AEE5940073E8F1 /* NavigationService.swift in Sources */,
 				18B0E44721AEBC380073E8F1 /* BoardViewModel.swift in Sources */,
 				185AA7F121AEFCCE00C9E8B9 /* NetworkRouter.swift in Sources */,
@@ -391,6 +392,7 @@
 				182287C721A8A5690053CCC0 /* Game.swift in Sources */,
 				18B0E44F21AEBD610073E8F1 /* Observable.swift in Sources */,
 				18B0E45D21AED8B20073E8F1 /* GameStatus.swift in Sources */,
+				185AA7F921AF0ECF00C9E8B9 /* StartViewController.swift in Sources */,
 				18B0E45A21AECFA00073E8F1 /* Player.swift in Sources */,
 				182287CC21A9A5FF0053CCC0 /* GameError.swift in Sources */,
 				18B0E46821AEE5940073E8F1 /* NavigationService.swift in Sources */,
