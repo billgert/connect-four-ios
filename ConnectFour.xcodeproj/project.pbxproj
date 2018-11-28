@@ -21,6 +21,8 @@
 		185AA7EB21AEF97F00C9E8B9 /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185AA7EA21AEF97F00C9E8B9 /* NetworkTests.swift */; };
 		185AA7EE21AEFB2800C9E8B9 /* BlinkistEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185AA7ED21AEFB2800C9E8B9 /* BlinkistEndPoint.swift */; };
 		185AA7EF21AEFB2800C9E8B9 /* BlinkistEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185AA7ED21AEFB2800C9E8B9 /* BlinkistEndPoint.swift */; };
+		185AA7F121AEFCCE00C9E8B9 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185AA7F021AEFCCE00C9E8B9 /* NetworkRouter.swift */; };
+		185AA7F221AEFCCE00C9E8B9 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185AA7F021AEFCCE00C9E8B9 /* NetworkRouter.swift */; };
 		18B0E44721AEBC380073E8F1 /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0E44621AEBC380073E8F1 /* BoardViewModel.swift */; };
 		18B0E44821AEBC380073E8F1 /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0E44621AEBC380073E8F1 /* BoardViewModel.swift */; };
 		18B0E44E21AEBD610073E8F1 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0E44D21AEBD610073E8F1 /* Observable.swift */; };
@@ -71,6 +73,7 @@
 		185AA7E721AEF87900C9E8B9 /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 		185AA7EA21AEF97F00C9E8B9 /* NetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTests.swift; sourceTree = "<group>"; };
 		185AA7ED21AEFB2800C9E8B9 /* BlinkistEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkistEndPoint.swift; sourceTree = "<group>"; };
+		185AA7F021AEFCCE00C9E8B9 /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
 		18B0E44621AEBC380073E8F1 /* BoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewModel.swift; sourceTree = "<group>"; };
 		18B0E44D21AEBD610073E8F1 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		18B0E45021AEBD6E0073E8F1 /* String+Pointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Pointer.swift"; sourceTree = "<group>"; };
@@ -161,8 +164,9 @@
 		185AA7EC21AEFB1100C9E8B9 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				18B0E46921AEE59C0073E8F1 /* NetworkService.swift */,
 				185AA7ED21AEFB2800C9E8B9 /* BlinkistEndPoint.swift */,
+				18B0E46921AEE59C0073E8F1 /* NetworkService.swift */,
+				185AA7F021AEFCCE00C9E8B9 /* NetworkRouter.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -364,6 +368,7 @@
 				18B0E45921AECFA00073E8F1 /* Player.swift in Sources */,
 				18B0E46721AEE5940073E8F1 /* NavigationService.swift in Sources */,
 				18B0E44721AEBC380073E8F1 /* BoardViewModel.swift in Sources */,
+				185AA7F121AEFCCE00C9E8B9 /* NetworkRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,6 +392,7 @@
 				18B0E46021AED8E80073E8F1 /* GameDisk.swift in Sources */,
 				18B0E47021AEEB250073E8F1 /* BoardTests.swift in Sources */,
 				18B0E46B21AEE59C0073E8F1 /* NetworkService.swift in Sources */,
+				185AA7F221AEFCCE00C9E8B9 /* NetworkRouter.swift in Sources */,
 				18B0E46E21AEE7480073E8F1 /* BoardGridCellModel.swift in Sources */,
 				18B0E46421AEE3380073E8F1 /* Configuration.swift in Sources */,
 			);
