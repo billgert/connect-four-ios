@@ -1,11 +1,3 @@
-//
-//  CoreTests.swift
-//  CoreTests
-//
-//  Created by Patrik Billgert on 2018-11-23.
-//  Copyright © 2018 Patrik Billgert. All rights reserved.
-//
-
 import XCTest
 @testable import ConnectFour
 
@@ -23,7 +15,7 @@ class CoreTests: XCTestCase {
     self.playerTwo = nil
   }
   
-  // MARK: - start()
+  // MARK: - start
 
   func testGameStartHasNoColumns() {
     let game = Game(columns: 0, rows: 0, players: (self.playerOne, self.playerTwo))
@@ -108,9 +100,6 @@ class CoreTests: XCTestCase {
   func testGameStatusHandlerIsFourInRowVertical() {
     let game = Game(columns: 7, rows: 6, players: (self.playerOne, self.playerTwo))
     
-    game.playerOne = self.playerOne
-    game.playerTwo = self.playerTwo
-  
     XCTAssertNoThrow(try game.start())
     XCTAssertNoThrow(try game.dropDiskInColumn(2))
     XCTAssertNoThrow(try game.dropDiskInColumn(2))

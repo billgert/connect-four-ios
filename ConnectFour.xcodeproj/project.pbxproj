@@ -38,6 +38,7 @@
 		18B0E46B21AEE59C0073E8F1 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0E46921AEE59C0073E8F1 /* NetworkService.swift */; };
 		18B0E46D21AEE7480073E8F1 /* BoardGridCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0E46C21AEE7480073E8F1 /* BoardGridCellModel.swift */; };
 		18B0E46E21AEE7480073E8F1 /* BoardGridCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0E46C21AEE7480073E8F1 /* BoardGridCellModel.swift */; };
+		18B0E47021AEEB250073E8F1 /* BoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0E46F21AEEB250073E8F1 /* BoardTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		18B0E46621AEE5940073E8F1 /* NavigationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationService.swift; sourceTree = "<group>"; };
 		18B0E46921AEE59C0073E8F1 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		18B0E46C21AEE7480073E8F1 /* BoardGridCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardGridCellModel.swift; sourceTree = "<group>"; };
+		18B0E46F21AEEB250073E8F1 /* BoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 		182287B821A8A2710053CCC0 /* ConnectFourTests */ = {
 			isa = PBXGroup;
 			children = (
+				18B0E46F21AEEB250073E8F1 /* BoardTests.swift */,
 				182287B921A8A2710053CCC0 /* CoreTests.swift */,
 				182287BB21A8A2710053CCC0 /* Info.plist */,
 			);
@@ -358,6 +361,7 @@
 				182287BA21A8A2710053CCC0 /* CoreTests.swift in Sources */,
 				18B0E44821AEBC380073E8F1 /* BoardViewModel.swift in Sources */,
 				18B0E46021AED8E80073E8F1 /* GameDisk.swift in Sources */,
+				18B0E47021AEEB250073E8F1 /* BoardTests.swift in Sources */,
 				18B0E46B21AEE59C0073E8F1 /* NetworkService.swift in Sources */,
 				18B0E46E21AEE7480073E8F1 /* BoardGridCellModel.swift in Sources */,
 				18B0E46421AEE3380073E8F1 /* Configuration.swift in Sources */,

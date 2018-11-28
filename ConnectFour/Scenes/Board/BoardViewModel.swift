@@ -8,8 +8,11 @@ class BoardViewModel {
   public let finishedMessage = Observable<String>()
   public let currentPlayerTitle = Observable<String>()
   public let currentPlayerTitleColor = Observable<String>()
-  public let gridSectionCellModels = Observable<[[BoardGridCellModel]]>()
+  
+  public var gridSectionCellModels: [[BoardGridCellModel]] = [[]]
 
+  public var updateHandler: () -> () = {}
+  
   // MARK: - Private Properties
   
   private let game: Game
@@ -43,8 +46,9 @@ class BoardViewModel {
   public func didSelectSection(_ section: Int) {
     do {
       let disk = try self.game.dropDiskInColumn(section)
-      let cellModel = self.gridSectionCellModels.value![disk.coordinate.column][disk.coordinate.row]
-      cellModel.color = disk.color // is this enough to trigger an update? Else make updateHandler. TEST
+      let cellModel = self.gridSectionCellModels[disk.coordinate.column][disk.coordinate.row]
+      cellModel.color = disk.color
+      self.updateHandler()
     } catch {
       self.errorMessage.value = error.localizedDescription
     }
@@ -59,7 +63,7 @@ class BoardViewModel {
   private func startGame() {
     do {
       let grid = try self.game.start()
-      self.gridSectionCellModels.value = grid.map { column in
+      self.gridSectionCellModels = grid.map { column in
         return column.map { _ in BoardGridCellModel() }
       }
     } catch {
