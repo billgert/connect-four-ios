@@ -12,21 +12,15 @@ import UIKit
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
+  
+  private var rootNavigator: GameNavigator!
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    self.window = UIWindow(frame: UIScreen.main.bounds)
-    self.window!.rootViewController = self.makeRootViewController()
-    self.window!.makeKeyAndVisible()
-    return true
-  }
-}
+    
+    self.rootNavigator = GameNavigator(navigationController: UINavigationController(),
+                                       window: UIWindow(frame: UIScreen.main.bounds))
 
-extension AppDelegate {
-  private func makeRootViewController() -> UIViewController {
-    let networkService = NetworkService<BlinkistEndPoint>()
-    let navigationService = NavigationService()
-    let startViewModel = StartViewModel(networkService, navigationService)
-    return StartViewController(viewModel: startViewModel)
+    return true
   }
 }
 

@@ -1,11 +1,11 @@
 import UIKit
 
-class StartViewController: UIViewController {
-  let viewModel: StartViewModel
+class BoardViewController: UIViewController {
+  let viewModel: BoardViewModel
   
   // MARK: - Lifecycle
   
-  init(viewModel: StartViewModel) {
+  init(viewModel: BoardViewModel) {
     self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
   }

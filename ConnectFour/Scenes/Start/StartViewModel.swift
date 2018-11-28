@@ -13,13 +13,13 @@ class StartViewModel {
   private let players = Observable<(Player, Player)>()
 
   private let networkService: NetworkService<BlinkistEndPoint>
-  private let navigationService: NavigationService
+  private let navigator: GameNavigator
   
   // MARK: - Lifecycle
   
-  init(_ networkService: NetworkService<BlinkistEndPoint>, _ navigationService: NavigationService) {
+  init(_ networkService: NetworkService<BlinkistEndPoint>, _ navigator: GameNavigator) {
     self.networkService = networkService
-    self.navigationService = navigationService
+    self.navigator = navigator
     
     self.requestConfiguration { configuration in
       self.players.value = (configuration.playerOne(), configuration.playerTwo())
@@ -36,7 +36,8 @@ class StartViewModel {
 
   public func didTapStartButton() {
     let game = Game(columns: 7, rows: 6, players: self.players.value!)
-    // 2. Pass the game object and tell navigationService that start button was tapped
+    let boardViewModel = BoardViewModel(game: game)
+    self.navigator.navigate(to: .board(viewModel: boardViewModel))
   }
   
   // MARK: - Requests
