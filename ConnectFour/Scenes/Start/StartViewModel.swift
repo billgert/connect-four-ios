@@ -11,7 +11,7 @@ class StartViewModel: ViewModel {
   // MARK: - Private Properties
   
   private let players = Observable<(Player, Player)>()
-
+  
   private let networkService: NetworkService<BlinkistEndPoint>
   private let navigator: GameNavigator
   
@@ -35,7 +35,7 @@ class StartViewModel: ViewModel {
   }
   
   // MARK: - Input
-
+  
   public func didTapStartButton() {
     let game = Game(columns: 7, rows: 6, players: self.players.value!)
     let boardViewModel = BoardViewModel(game: game)
@@ -44,9 +44,20 @@ class StartViewModel: ViewModel {
   
   // MARK: - Requests
   
-  private func requestConfiguration(completion: (Configuration) -> Void) {
-    // 1. Use networkService
-    // 2. Return configuration model
-    // 3. It's an array...?
+  private func requestConfiguration(completion: @escaping (Configuration) -> Void) {
+    self.networkService.request(
+      endpoint: .getConfiguration,
+      modelType: [Configuration].self) { result in
+        switch result {
+        case .failure(let error):
+          self.errorMessage.value = error.localizedDescription
+        case .success(let configurations):
+          if let configuration = configurations.first {
+            completion(configuration)
+          } else {
+            self.errorMessage.value = "No configurations found"
+          }
+        }
+    }
   }
 }
