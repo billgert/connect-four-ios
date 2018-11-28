@@ -5,19 +5,19 @@ class NetworkService<Route: EndPoint> {
   
   public func request<Model: Decodable>(endpoint: Route,
                                         modelType: Model.Type,
-                                        completion: @escaping (Model?, Error?) -> Void) {
+                                        completion: @escaping (Result<Model>) -> Void) {
     
     self.router.request(endpoint) { data, response, error in
       if let error = error {
-        completion(nil, error)
+        completion(.failure(error))
         return
       }
       if let data = data {
         do {
           let model = try JSONDecoder().decode(modelType, from: data)
-          completion(model, nil)
+          completion(.success(model))
         } catch {
-          completion(nil, error)
+          completion(.failure(error))
         }
       }
     }
