@@ -1,7 +1,7 @@
 import XCTest
 @testable import ConnectFour
 
-class CoreTests: XCTestCase {
+class GameTests: XCTestCase {
   var playerOne: Player!
   var playerTwo: Player!
   

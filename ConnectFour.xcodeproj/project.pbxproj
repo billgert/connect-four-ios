@@ -11,13 +11,19 @@
 		182287A721A8A2700053CCC0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182287A621A8A2700053CCC0 /* ViewController.swift */; };
 		182287AC21A8A2710053CCC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 182287AB21A8A2710053CCC0 /* Assets.xcassets */; };
 		182287AF21A8A2710053CCC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 182287AD21A8A2710053CCC0 /* LaunchScreen.storyboard */; };
-		182287BA21A8A2710053CCC0 /* CoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182287B921A8A2710053CCC0 /* CoreTests.swift */; };
+		182287BA21A8A2710053CCC0 /* GameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182287B921A8A2710053CCC0 /* GameTests.swift */; };
 		182287C621A8A5600053CCC0 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182287C521A8A5600053CCC0 /* Game.swift */; };
 		182287C721A8A5690053CCC0 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182287C521A8A5600053CCC0 /* Game.swift */; };
 		182287CB21A9A5CD0053CCC0 /* GameError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182287CA21A9A5CD0053CCC0 /* GameError.swift */; };
 		182287CC21A9A5FF0053CCC0 /* GameError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182287CA21A9A5CD0053CCC0 /* GameError.swift */; };
 		185AA7E821AEF87900C9E8B9 /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185AA7E721AEF87900C9E8B9 /* TypeAliases.swift */; };
 		185AA7E921AEF87900C9E8B9 /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185AA7E721AEF87900C9E8B9 /* TypeAliases.swift */; };
+		185AA7EE21AEFB2800C9E8B9 /* BlinkistEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185AA7ED21AEFB2800C9E8B9 /* BlinkistEndPoint.swift */; };
+		185AA7EF21AEFB2800C9E8B9 /* BlinkistEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185AA7ED21AEFB2800C9E8B9 /* BlinkistEndPoint.swift */; };
+		185AA7F121AEFCCE00C9E8B9 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185AA7F021AEFCCE00C9E8B9 /* NetworkRouter.swift */; };
+		185AA7F221AEFCCE00C9E8B9 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185AA7F021AEFCCE00C9E8B9 /* NetworkRouter.swift */; };
+		185AA7F421AF085400C9E8B9 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185AA7F321AF085400C9E8B9 /* NetworkResult.swift */; };
+		185AA7F521AF085400C9E8B9 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185AA7F321AF085400C9E8B9 /* NetworkResult.swift */; };
 		18B0E44721AEBC380073E8F1 /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0E44621AEBC380073E8F1 /* BoardViewModel.swift */; };
 		18B0E44821AEBC380073E8F1 /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0E44621AEBC380073E8F1 /* BoardViewModel.swift */; };
 		18B0E44E21AEBD610073E8F1 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0E44D21AEBD610073E8F1 /* Observable.swift */; };
@@ -61,11 +67,14 @@
 		182287AE21A8A2710053CCC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		182287B021A8A2710053CCC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		182287B521A8A2710053CCC0 /* ConnectFourTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConnectFourTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		182287B921A8A2710053CCC0 /* CoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreTests.swift; sourceTree = "<group>"; };
+		182287B921A8A2710053CCC0 /* GameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTests.swift; sourceTree = "<group>"; };
 		182287BB21A8A2710053CCC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		182287C521A8A5600053CCC0 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		182287CA21A9A5CD0053CCC0 /* GameError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameError.swift; sourceTree = "<group>"; };
 		185AA7E721AEF87900C9E8B9 /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
+		185AA7ED21AEFB2800C9E8B9 /* BlinkistEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkistEndPoint.swift; sourceTree = "<group>"; };
+		185AA7F021AEFCCE00C9E8B9 /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
+		185AA7F321AF085400C9E8B9 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		18B0E44621AEBC380073E8F1 /* BoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewModel.swift; sourceTree = "<group>"; };
 		18B0E44D21AEBD610073E8F1 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		18B0E45021AEBD6E0073E8F1 /* String+Pointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Pointer.swift"; sourceTree = "<group>"; };
@@ -137,7 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				18B0E46F21AEEB250073E8F1 /* BoardTests.swift */,
-				182287B921A8A2710053CCC0 /* CoreTests.swift */,
+				182287B921A8A2710053CCC0 /* GameTests.swift */,
 				182287BB21A8A2710053CCC0 /* Info.plist */,
 			);
 			path = ConnectFourTests;
@@ -150,6 +159,25 @@
 				18B0E46521AEE5880073E8F1 /* Services */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		185AA7EC21AEFB1100C9E8B9 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				18B0E46921AEE59C0073E8F1 /* NetworkService.swift */,
+				185AA7F621AF08CA00C9E8B9 /* Tools */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		185AA7F621AF08CA00C9E8B9 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				185AA7ED21AEFB2800C9E8B9 /* BlinkistEndPoint.swift */,
+				185AA7F321AF085400C9E8B9 /* NetworkResult.swift */,
+				185AA7F021AEFCCE00C9E8B9 /* NetworkRouter.swift */,
+			);
+			path = Tools;
 			sourceTree = "<group>";
 		};
 		18B0E44521AEBC1C0073E8F1 /* Scenes */ = {
@@ -227,7 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				18B0E46621AEE5940073E8F1 /* NavigationService.swift */,
-				18B0E46921AEE59C0073E8F1 /* NetworkService.swift */,
+				185AA7EC21AEFB1100C9E8B9 /* Networking */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -340,6 +368,7 @@
 				18B0E46A21AEE59C0073E8F1 /* NetworkService.swift in Sources */,
 				182287CB21A9A5CD0053CCC0 /* GameError.swift in Sources */,
 				18B0E46321AEE3380073E8F1 /* Configuration.swift in Sources */,
+				185AA7EE21AEFB2800C9E8B9 /* BlinkistEndPoint.swift in Sources */,
 				185AA7E821AEF87900C9E8B9 /* TypeAliases.swift in Sources */,
 				182287C621A8A5600053CCC0 /* Game.swift in Sources */,
 				18B0E46D21AEE7480073E8F1 /* BoardGridCellModel.swift in Sources */,
@@ -348,6 +377,8 @@
 				18B0E45921AECFA00073E8F1 /* Player.swift in Sources */,
 				18B0E46721AEE5940073E8F1 /* NavigationService.swift in Sources */,
 				18B0E44721AEBC380073E8F1 /* BoardViewModel.swift in Sources */,
+				185AA7F121AEFCCE00C9E8B9 /* NetworkRouter.swift in Sources */,
+				185AA7F421AF085400C9E8B9 /* NetworkResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,11 +395,14 @@
 				182287CC21A9A5FF0053CCC0 /* GameError.swift in Sources */,
 				18B0E46821AEE5940073E8F1 /* NavigationService.swift in Sources */,
 				185AA7E921AEF87900C9E8B9 /* TypeAliases.swift in Sources */,
-				182287BA21A8A2710053CCC0 /* CoreTests.swift in Sources */,
+				182287BA21A8A2710053CCC0 /* GameTests.swift in Sources */,
+				185AA7F521AF085400C9E8B9 /* NetworkResult.swift in Sources */,
+				185AA7EF21AEFB2800C9E8B9 /* BlinkistEndPoint.swift in Sources */,
 				18B0E44821AEBC380073E8F1 /* BoardViewModel.swift in Sources */,
 				18B0E46021AED8E80073E8F1 /* GameDisk.swift in Sources */,
 				18B0E47021AEEB250073E8F1 /* BoardTests.swift in Sources */,
 				18B0E46B21AEE59C0073E8F1 /* NetworkService.swift in Sources */,
+				185AA7F221AEFCCE00C9E8B9 /* NetworkRouter.swift in Sources */,
 				18B0E46E21AEE7480073E8F1 /* BoardGridCellModel.swift in Sources */,
 				18B0E46421AEE3380073E8F1 /* Configuration.swift in Sources */,
 			);
