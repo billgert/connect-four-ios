@@ -5,9 +5,10 @@ class NetworkRouter<Route: EndPoint> {
 
   public func request(_ route: Route, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
     let request = self.buildRequest(from: route)
-    self.session.dataTask(with: request) { (data, response, error) in
+    let task = self.session.dataTask(with: request) { (data, response, error) in
       completion(data, response, error)
     }
+    task.resume()
   }
   
   private func buildRequest(from route: Route) -> URLRequest {
