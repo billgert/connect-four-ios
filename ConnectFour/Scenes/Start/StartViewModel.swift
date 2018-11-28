@@ -12,12 +12,12 @@ class StartViewModel {
   
   private let players = Observable<(Player, Player)>()
 
-  private let networkService: NetworkService
+  private let networkService: NetworkService<BlinkistEndPoint>
   private let navigationService: NavigationService
   
   // MARK: - Lifecycle
   
-  init(networkService: NetworkService, navigationService: NavigationService) {
+  init(networkService: NetworkService<BlinkistEndPoint>, navigationService: NavigationService) {
     self.networkService = networkService
     self.navigationService = navigationService
     
