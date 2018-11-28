@@ -22,20 +22,20 @@ class StartViewModel {
     self.navigationService = navigationService
     
     self.requestConfiguration { configuration in
-      // 1. Transform configuration to players
-      // 2. Set players tuple
+      self.players.value = (configuration.playerOne(), configuration.playerTwo())
     }
     
     self.players.subscribe { players in
-      // 1. Set playerOneTitle & playerTwoTitle ({name} is ready)
-      // 2. Set startButtonIsEnabled
+      self.playerOneTitle.value = "\(players.0.name) is ready"
+      self.playerTwoTitle.value = "\(players.1.name) is ready"
+      self.startButtonIsEnabled.value = true
     }
   }
   
   // MARK: - Input
 
   public func didTapStartButton() {
-    // 1. Create a new game object with the players
+    let game = Game(columns: 7, rows: 6, players: self.players.value!)
     // 2. Pass the game object and tell navigationService that start button was tapped
   }
   
@@ -44,17 +44,6 @@ class StartViewModel {
   private func requestConfiguration(completion: (Configuration) -> Void) {
     // 1. Use networkService
     // 2. Return configuration model
+    // 3. It's an array...?
   }
-}
-
-struct Configuration {
-  
-}
-
-class NetworkService {
-  
-}
-
-class NavigationService {
-  
 }
