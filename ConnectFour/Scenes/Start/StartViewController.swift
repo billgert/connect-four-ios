@@ -1,6 +1,6 @@
 import UIKit
 
-class StartViewController: UIViewController {
+class StartViewController: UIViewController, SetupVC, AlertHandler {
   // MARK: - Private Properties
   
   private lazy var verticalStackView: UIStackView = {
@@ -55,9 +55,9 @@ class StartViewController: UIViewController {
     self.setupBindings()
   }
   
-  // MARK: - Private Functions
+  // MARK: - SetupVC
   
-  private func setupLayout() {
+  func setupLayout() {
     self.verticalStackView.addArrangedSubview(self.playerOneLabel)
     self.verticalStackView.addArrangedSubview(self.playerTwoLabel)
     self.verticalStackView.addArrangedSubview(self.startButton)
@@ -68,7 +68,7 @@ class StartViewController: UIViewController {
     ])
   }
   
-  private func setupBindings() {
+  func setupBindings() {
     // MARK: playerOneLabel
     
     self.viewModel.playerOneText.subscribe(trigger: true) { [unowned self] in
@@ -104,5 +104,11 @@ class StartViewController: UIViewController {
     self.startButton.addAction(for: .touchUpInside, { [unowned self] in
       self.viewModel.didTapStartButton()
     })
+    
+    // MARK: errorMessage
+    
+    self.viewModel.errorMessage.subscribe { [unowned self] in
+      self.presentAlert(title: $0, message: nil)
+    }
   }
 }

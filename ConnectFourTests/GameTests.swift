@@ -1,4 +1,5 @@
 import XCTest
+
 @testable import ConnectFour
 
 class GameTests: XCTestCase {

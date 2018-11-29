@@ -1,5 +1,7 @@
 import XCTest
 
+@testable import ConnectFour
+
 class BoardTests: XCTestCase {
   // MARK: - didSelectSection
   
