@@ -103,6 +103,7 @@ class Game {
     
     for column in 0..<width { // Iterate on columns from left to right
       for row in 0..<height { // Iterate on rows in column from bottom to top
+        
         let slot = self.grid[column][row]
         
         guard slot != emptySlot else {
