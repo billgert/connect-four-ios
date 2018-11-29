@@ -37,6 +37,8 @@
 		18B0E46D21AEE7480073E8F1 /* BoardGridCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0E46C21AEE7480073E8F1 /* BoardGridCellModel.swift */; };
 		18B0E47021AEEB250073E8F1 /* BoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0E46F21AEEB250073E8F1 /* BoardTests.swift */; };
 		18EA879A21B068B900E7484E /* SetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EA879921B068B900E7484E /* SetupVC.swift */; };
+		18EA879D21B069D000E7484E /* BoardGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EA879C21B069D000E7484E /* BoardGridCell.swift */; };
+		18EA879F21B06B1700E7484E /* BoardGridCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EA879E21B06B1700E7484E /* BoardGridCollectionLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +86,8 @@
 		18B0E46C21AEE7480073E8F1 /* BoardGridCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardGridCellModel.swift; sourceTree = "<group>"; };
 		18B0E46F21AEEB250073E8F1 /* BoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTests.swift; sourceTree = "<group>"; };
 		18EA879921B068B900E7484E /* SetupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupVC.swift; sourceTree = "<group>"; };
+		18EA879C21B069D000E7484E /* BoardGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardGridCell.swift; sourceTree = "<group>"; };
+		18EA879E21B06B1700E7484E /* BoardGridCollectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardGridCollectionLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,9 +209,10 @@
 		18B0E44A21AEBC4D0073E8F1 /* Board */ = {
 			isa = PBXGroup;
 			children = (
-				18B0E46C21AEE7480073E8F1 /* BoardGridCellModel.swift */,
 				185AA7FE21AF122800C9E8B9 /* BoardViewController.swift */,
+				18EA879E21B06B1700E7484E /* BoardGridCollectionLayout.swift */,
 				18B0E44621AEBC380073E8F1 /* BoardViewModel.swift */,
+				18EA879B21B069B900E7484E /* Cell */,
 			);
 			path = Board;
 			sourceTree = "<group>";
@@ -262,6 +267,15 @@
 				18B0E45B21AED8B20073E8F1 /* GameStatus.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		18EA879B21B069B900E7484E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				18EA879C21B069D000E7484E /* BoardGridCell.swift */,
+				18B0E46C21AEE7480073E8F1 /* BoardGridCellModel.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -378,6 +392,7 @@
 				185AA7EE21AEFB2800C9E8B9 /* BlinkistEndPoint.swift in Sources */,
 				185AA7E821AEF87900C9E8B9 /* Array2D.swift in Sources */,
 				182287C621A8A5600053CCC0 /* Game.swift in Sources */,
+				18EA879F21B06B1700E7484E /* BoardGridCollectionLayout.swift in Sources */,
 				18EA879A21B068B900E7484E /* SetupVC.swift in Sources */,
 				18B0E46D21AEE7480073E8F1 /* BoardGridCellModel.swift in Sources */,
 				18B0E44E21AEBD610073E8F1 /* Observable.swift in Sources */,
@@ -387,6 +402,7 @@
 				185AA80E21AF34B700C9E8B9 /* UIColor+Hex.swift in Sources */,
 				18B0E45921AECFA00073E8F1 /* Player.swift in Sources */,
 				185AA7F821AF0ECA00C9E8B9 /* StartViewController.swift in Sources */,
+				18EA879D21B069D000E7484E /* BoardGridCell.swift in Sources */,
 				18B0E44721AEBC380073E8F1 /* BoardViewModel.swift in Sources */,
 				185AA7F121AEFCCE00C9E8B9 /* NetworkRouter.swift in Sources */,
 				185AA7F421AF085400C9E8B9 /* NetworkResult.swift in Sources */,

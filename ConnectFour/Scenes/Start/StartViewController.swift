@@ -104,5 +104,11 @@ class StartViewController: UIViewController, SetupVC {
     self.startButton.addAction(for: .touchUpInside, { [unowned self] in
       self.viewModel.didTapStartButton()
     })
+    
+    // MARK: errorMessage
+    
+    self.viewModel.errorMessage.subscribe { [unowned self] in
+      print($0) // Present in alert view
+    }
   }
 }

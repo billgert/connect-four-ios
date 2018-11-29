@@ -2,12 +2,15 @@ import Foundation
 
 class BoardViewModel: ViewModel {
   // MARK: - Output
-  
-  public let restartButtonIsHidden = Observable<Bool>(value: true)
-  public let finishedMessage = Observable<String>()
+
   public let currentPlayerTitle = Observable<String>()
   public let currentPlayerTitleColor = Observable<String>()
-
+  
+  public let restartButtonIsHidden = Observable<Bool>(value: true)
+  public let restartButtonTitle: String = "Restart game"
+  
+  public let finishedMessage = Observable<String>()
+  
   public var gridSectionCellModels: Array2D<BoardGridCellModel> = [[]]
 
   public var updateHandler: () -> () = {}
