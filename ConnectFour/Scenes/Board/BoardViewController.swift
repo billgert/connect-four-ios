@@ -52,7 +52,7 @@ class BoardViewController: UIViewController, SetupVC, AlertHandler {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    self.view.backgroundColor = .white
+    self.view.backgroundColor = .black
     
     self.setupLayout()
     self.setupBindings()
@@ -130,7 +130,6 @@ extension BoardViewController: UICollectionViewDataSource, UICollectionViewDeleg
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BoardGridCell", for: indexPath) as! BoardGridCell
     cell.model = self.viewModel.gridSectionCellModels[indexPath.section][indexPath.row]
-    cell.testLabel.text = "\([indexPath.section], [indexPath.row])"
     return cell
   }
   
