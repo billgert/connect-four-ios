@@ -6,7 +6,6 @@ class BoardViewModel: ViewModel {
   public let currentPlayerTitle = Observable<String>()
   public let currentPlayerTitleColor = Observable<String>()
   
-  public let restartButtonIsHidden = Observable<Bool>(value: true)
   public let restartButtonTitle: String = "Restart game"
   
   public let finishedMessage = Observable<String>()
@@ -14,7 +13,7 @@ class BoardViewModel: ViewModel {
   public var gridSectionCellModels: Array2D<BoardGridCellModel> = [[]]
 
   public var updateHandler: () -> () = {}
-  
+
   // MARK: - Private Properties
   
   private let game: Game
@@ -27,23 +26,21 @@ class BoardViewModel: ViewModel {
     super.init()
     
     self.game.status.subscribe { [unowned self] status in
-      self.updateHandler()
-      
       switch status {
       case .inactive:
-        self.restartButtonIsHidden.value = true
+        print("inactive")
       case .active(let player):
-        self.restartButtonIsHidden.value = true
         self.currentPlayerTitle.value = "\(player.name)'s turn"
         self.currentPlayerTitleColor.value = player.color
       case .finished(winner: let player):
-        self.restartButtonIsHidden.value = false
         if let player = player {
           self.finishedMessage.value = "Winner: \(player.name)"
         } else {
           self.finishedMessage.value = "Draw"
         }
       }
+      
+      self.updateHandler()
     }
     
     self.startGame()

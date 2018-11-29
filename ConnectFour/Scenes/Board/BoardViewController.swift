@@ -1,6 +1,6 @@
 import UIKit
 
-class BoardViewController: UIViewController, SetupVC {
+class BoardViewController: UIViewController, SetupVC, AlertHandler {
   // MARK: - Private Properties
   
   private lazy var verticalStackView: UIStackView = {
@@ -57,11 +57,7 @@ class BoardViewController: UIViewController, SetupVC {
     self.setupLayout()
     self.setupBindings()
   }
-  
-  override func viewWillLayoutSubviews() {
-    super.viewWillLayoutSubviews()
-  }
-  
+
   // MARK: - SetupVC
   
   func setupLayout() {
@@ -98,10 +94,6 @@ class BoardViewController: UIViewController, SetupVC {
     
     self.restartButton.setTitle(self.viewModel.restartButtonTitle, for: .normal)
     
-    self.viewModel.restartButtonIsHidden.subscribe(trigger: true) { [unowned self] in
-      self.restartButton.isHidden = $0
-    }
-    
     self.restartButton.addAction(for: .touchUpInside, { [unowned self] in
       self.viewModel.didTapRestartButton()
     })
@@ -114,12 +106,12 @@ class BoardViewController: UIViewController, SetupVC {
     
     // MARK: UIAlertView
     
-    self.viewModel.finishedMessage.subscribe {
-      print($0) // Present in alert view
+    self.viewModel.finishedMessage.subscribe { [unowned self] in
+      self.presentAlert(title: $0, message: nil)
     }
     
-    self.viewModel.errorMessage.subscribe {
-      print($0) // Present in alert view
+    self.viewModel.errorMessage.subscribe { [unowned self] in
+      self.presentAlert(title: $0, message: nil)
     }
   }
 }

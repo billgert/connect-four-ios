@@ -39,6 +39,7 @@
 		18EA879A21B068B900E7484E /* SetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EA879921B068B900E7484E /* SetupVC.swift */; };
 		18EA879D21B069D000E7484E /* BoardGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EA879C21B069D000E7484E /* BoardGridCell.swift */; };
 		18EA879F21B06B1700E7484E /* BoardGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EA879E21B06B1700E7484E /* BoardGridLayout.swift */; };
+		18EA87A121B096E000E7484E /* AlertHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EA87A021B096E000E7484E /* AlertHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		18EA879921B068B900E7484E /* SetupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupVC.swift; sourceTree = "<group>"; };
 		18EA879C21B069D000E7484E /* BoardGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardGridCell.swift; sourceTree = "<group>"; };
 		18EA879E21B06B1700E7484E /* BoardGridLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardGridLayout.swift; sourceTree = "<group>"; };
+		18EA87A021B096E000E7484E /* AlertHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +222,7 @@
 		18B0E44B21AEBD420073E8F1 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				18EA87A021B096E000E7484E /* AlertHandler.swift */,
 				185AA7E721AEF87900C9E8B9 /* Array2D.swift */,
 				185AA80121AF127F00C9E8B9 /* Navigator.swift */,
 				18B0E44D21AEBD610073E8F1 /* Observable.swift */,
@@ -388,6 +391,7 @@
 				18B0E46A21AEE59C0073E8F1 /* NetworkService.swift in Sources */,
 				185AA80B21AF2F0700C9E8B9 /* UIView+Layout.swift in Sources */,
 				182287CB21A9A5CD0053CCC0 /* GameError.swift in Sources */,
+				18EA87A121B096E000E7484E /* AlertHandler.swift in Sources */,
 				18B0E46321AEE3380073E8F1 /* Configuration.swift in Sources */,
 				185AA7EE21AEFB2800C9E8B9 /* BlinkistEndPoint.swift in Sources */,
 				185AA7E821AEF87900C9E8B9 /* Array2D.swift in Sources */,

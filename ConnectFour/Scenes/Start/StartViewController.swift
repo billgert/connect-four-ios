@@ -1,6 +1,6 @@
 import UIKit
 
-class StartViewController: UIViewController, SetupVC {
+class StartViewController: UIViewController, SetupVC, AlertHandler {
   // MARK: - Private Properties
   
   private lazy var verticalStackView: UIStackView = {
@@ -107,8 +107,8 @@ class StartViewController: UIViewController, SetupVC {
     
     // MARK: errorMessage
     
-    self.viewModel.errorMessage.subscribe {
-      print($0) // Present in alert view
+    self.viewModel.errorMessage.subscribe { [unowned self] in
+      self.presentAlert(title: $0, message: nil)
     }
   }
 }
