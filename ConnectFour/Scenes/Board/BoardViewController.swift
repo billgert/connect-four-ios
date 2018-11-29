@@ -19,10 +19,10 @@ class BoardViewController: UIViewController, SetupVC {
   }()
   
   private lazy var collectionView: UICollectionView = {
-    let c = UICollectionView(frame: .zero, collectionViewLayout: BoardGridCollectionLayout())
+    let c = UICollectionView(frame: .zero, collectionViewLayout: BoardGridLayout())
     c.dataSource = self
     c.delegate = self
-    c.backgroundColor = .yellow
+    c.backgroundColor = .clear
     c.register(BoardGridCell.self, forCellWithReuseIdentifier: "BoardGridCell")
     return c
   }()
@@ -132,6 +132,7 @@ extension BoardViewController: UICollectionViewDataSource, UICollectionViewDeleg
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BoardGridCell", for: indexPath) as! BoardGridCell
     cell.model = self.viewModel.gridSectionCellModels[indexPath.section][indexPath.row]
+    cell.testLabel.text = "\([indexPath.section], [indexPath.row])"
     return cell
   }
   
