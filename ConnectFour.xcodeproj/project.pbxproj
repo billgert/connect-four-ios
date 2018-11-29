@@ -36,6 +36,7 @@
 		18B0E46A21AEE59C0073E8F1 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0E46921AEE59C0073E8F1 /* NetworkService.swift */; };
 		18B0E46D21AEE7480073E8F1 /* BoardGridCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0E46C21AEE7480073E8F1 /* BoardGridCellModel.swift */; };
 		18B0E47021AEEB250073E8F1 /* BoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0E46F21AEEB250073E8F1 /* BoardTests.swift */; };
+		18EA879A21B068B900E7484E /* SetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EA879921B068B900E7484E /* SetupVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,7 @@
 		18B0E46921AEE59C0073E8F1 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		18B0E46C21AEE7480073E8F1 /* BoardGridCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardGridCellModel.swift; sourceTree = "<group>"; };
 		18B0E46F21AEEB250073E8F1 /* BoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTests.swift; sourceTree = "<group>"; };
+		18EA879921B068B900E7484E /* SetupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +218,7 @@
 				185AA7E721AEF87900C9E8B9 /* Array2D.swift */,
 				185AA80121AF127F00C9E8B9 /* Navigator.swift */,
 				18B0E44D21AEBD610073E8F1 /* Observable.swift */,
+				18EA879921B068B900E7484E /* SetupVC.swift */,
 				185AA80421AF189A00C9E8B9 /* ViewModel.swift */,
 				18B0E44C21AEBD480073E8F1 /* Extensions */,
 			);
@@ -375,6 +378,7 @@
 				185AA7EE21AEFB2800C9E8B9 /* BlinkistEndPoint.swift in Sources */,
 				185AA7E821AEF87900C9E8B9 /* Array2D.swift in Sources */,
 				182287C621A8A5600053CCC0 /* Game.swift in Sources */,
+				18EA879A21B068B900E7484E /* SetupVC.swift in Sources */,
 				18B0E46D21AEE7480073E8F1 /* BoardGridCellModel.swift in Sources */,
 				18B0E44E21AEBD610073E8F1 /* Observable.swift in Sources */,
 				185AA80521AF189A00C9E8B9 /* ViewModel.swift in Sources */,

@@ -1,6 +1,8 @@
 import UIKit
 
-class BoardViewController: UIViewController {
+class BoardViewController: UIViewController, SetupVC {
+  // MARK: - Private Properties
+  
   private let viewModel: BoardViewModel
   
   // MARK: - Lifecycle
@@ -17,6 +19,16 @@ class BoardViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    self.view.backgroundColor = .yellow
+    self.view.backgroundColor = .white
+  }
+  
+  // MARK: - SetupVC
+  
+  func setupLayout() {
+    
+  }
+  
+  func setupBindings() {
+    
   }
 }
