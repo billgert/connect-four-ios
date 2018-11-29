@@ -27,7 +27,7 @@ class Game {
     self.playerTwo = players.1
   }
   
-  // MARK: - Public Functions
+  // MARK: - Public Methods
   
   @discardableResult
   public func start() throws -> Array2D<Int> {
@@ -104,7 +104,7 @@ class Game {
           continue
         }
         
-         // Look up
+         // Look up (scan from bottom)
         if row + 3 < self.rows &&
           slot == self.grid[column][row + 1] &&
           slot == self.grid[column][row + 2] &&
@@ -114,7 +114,7 @@ class Game {
         }
         
         if column + 3 < self.columns {
-          // Look right
+          // Look right (scan from left)
           if slot == self.grid[column + 1][row] &&
             slot == self.grid[column + 2][row] &&
             slot == self.grid[column + 3][row] {
@@ -122,7 +122,7 @@ class Game {
             return true
           }
           
-          // Look up & right
+          // Look up & right (scan from right)
           if row + 3 < self.rows &&
             slot == self.grid[column + 1][row + 1] &&
             slot == self.grid[column + 2][row + 2] &&
@@ -131,7 +131,7 @@ class Game {
             return true
           }
           
-          // Look up & left
+          // Look up & left (scan from left)
           if row - 3 >= 0 &&
             slot == self.grid[column + 1][row - 1] &&
             slot == self.grid[column + 2][row - 2] &&

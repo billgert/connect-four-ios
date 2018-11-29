@@ -55,7 +55,7 @@ class StartViewController: UIViewController {
     self.setupBindings()
   }
   
-  // MARK: - Private Functions
+  // MARK: - Private Methods
   
   private func setupLayout() {
     self.verticalStackView.addArrangedSubview(self.playerOneLabel)

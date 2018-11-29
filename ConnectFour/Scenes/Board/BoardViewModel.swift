@@ -59,7 +59,7 @@ class BoardViewModel: ViewModel {
     self.startGame()
   }
   
-  // MARK: - Private Functions
+  // MARK: - Private Methods
   
   private func startGame() {
     do {

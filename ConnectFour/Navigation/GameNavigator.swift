@@ -26,7 +26,7 @@ class GameNavigator: Navigator {
     self.navigationController.pushViewController(viewController, animated: true)
   }
   
-  // MARK: - Private Functions
+  // MARK: - Private Methods
   
   private func makeViewController(for destination: Destination) -> UIViewController {
     switch destination {
