@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 class BoardViewModel: ViewModel {
   // MARK: - Output
@@ -43,6 +43,14 @@ class BoardViewModel: ViewModel {
     }
     
     self.startGame()
+  }
+  
+  // MARK: - Output
+  
+  public func collectionViewWidthMultiplier() -> CGFloat {
+    let columns = CGFloat(self.game.columns)
+    let rows = CGFloat(self.game.rows)
+    return (columns / 1.0) / rows
   }
   
   // MARK: - Input

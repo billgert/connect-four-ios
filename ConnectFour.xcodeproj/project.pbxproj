@@ -209,8 +209,8 @@
 		18B0E44A21AEBC4D0073E8F1 /* Board */ = {
 			isa = PBXGroup;
 			children = (
-				185AA7FE21AF122800C9E8B9 /* BoardViewController.swift */,
 				18EA879E21B06B1700E7484E /* BoardGridCollectionLayout.swift */,
+				185AA7FE21AF122800C9E8B9 /* BoardViewController.swift */,
 				18B0E44621AEBC380073E8F1 /* BoardViewModel.swift */,
 				18EA879B21B069B900E7484E /* Cell */,
 			);

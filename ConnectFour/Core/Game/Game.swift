@@ -5,6 +5,9 @@ class Game {
   
   public var statusHandler: (Status) -> () = { _ in }
   
+  public let columns: Int
+  public let rows: Int
+  
   // MARK: - Private Properties
 
   private var activePlayer: Player?
@@ -12,9 +15,7 @@ class Game {
   private var grid: Array2D<Int> = [[]] {
     didSet { self.update() }
   }
-
-  private let columns: Int
-  private let rows: Int
+  
   private let playerOne: Player
   private let playerTwo: Player
   

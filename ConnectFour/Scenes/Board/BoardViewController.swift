@@ -7,6 +7,7 @@ class BoardViewController: UIViewController, SetupVC {
     let s = UIStackView()
     s.axis = .vertical
     s.spacing = 20.0
+    s.alignment = .center
     return s
   }()
   
@@ -21,7 +22,7 @@ class BoardViewController: UIViewController, SetupVC {
     let c = UICollectionView(frame: .zero, collectionViewLayout: BoardGridCollectionLayout())
     c.dataSource = self
     c.delegate = self
-    c.backgroundColor = .red
+    c.backgroundColor = .yellow
     c.register(BoardGridCell.self, forCellWithReuseIdentifier: "BoardGridCell")
     return c
   }()
@@ -57,23 +58,28 @@ class BoardViewController: UIViewController, SetupVC {
     self.setupBindings()
   }
   
+  override func viewWillLayoutSubviews() {
+    super.viewWillLayoutSubviews()
+  }
+  
   // MARK: - SetupVC
   
   func setupLayout() {
     self.verticalStackView.addArrangedSubview(self.playerLabel)
     self.verticalStackView.addArrangedSubview(self.collectionView)
     self.verticalStackView.addArrangedSubview(self.restartButton)
-    
-    self.playerLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
-    self.restartButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-    
-    // Determine collectionView size ratio depending on sections and items
-    
+
     self.view.addSubview(self.verticalStackView, constraints: [
       self.verticalStackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-      self.verticalStackView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+      self.verticalStackView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20.0),
       self.verticalStackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-      self.verticalStackView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
+      self.verticalStackView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -20.0)
+    ])
+    
+    NSLayoutConstraint.activate([
+      self.playerLabel.heightAnchor.constraint(equalToConstant: self.playerLabel.font.lineHeight),
+      self.restartButton.heightAnchor.constraint(equalToConstant: self.restartButton.intrinsicContentSize.height),
+      self.collectionView.widthAnchor.constraint(equalTo: self.collectionView.heightAnchor, multiplier: self.viewModel.collectionViewWidthMultiplier())
     ])
   }
   

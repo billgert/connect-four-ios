@@ -107,7 +107,7 @@ class StartViewController: UIViewController, SetupVC {
     
     // MARK: errorMessage
     
-    self.viewModel.errorMessage.subscribe { [unowned self] in
+    self.viewModel.errorMessage.subscribe {
       print($0) // Present in alert view
     }
   }
