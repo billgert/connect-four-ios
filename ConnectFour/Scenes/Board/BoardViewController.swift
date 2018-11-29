@@ -106,6 +106,12 @@ class BoardViewController: UIViewController, SetupVC {
       self.viewModel.didTapRestartButton()
     })
     
+    // MARK: updateHandler
+    
+    self.viewModel.updateHandler = { [unowned self] in
+      self.collectionView.reloadData()
+    }
+    
     // MARK: UIAlertView
     
     self.viewModel.finishedMessage.subscribe {

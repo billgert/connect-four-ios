@@ -3,7 +3,7 @@ import Foundation
 class Game {
   // MARK: - Public Properties
   
-  public var statusHandler: (Status) -> () = { _ in }
+  public let status = Observable<Status>(value: .inactive)
   
   public let columns: Int
   public let rows: Int
@@ -43,10 +43,14 @@ class Game {
   
   @discardableResult
   public func dropDiskInColumn(_ column: Int) throws -> Disk {
+    if case .finished = self.status.value! {
+      throw Error.gameFinished
+    }
+    
     guard let player = self.activePlayer else {
       throw Error.activePlayer
     }
-
+    
     guard let row = self.emptyRow(in: column) else {
       throw Error.columnFull
     }
@@ -67,12 +71,12 @@ class Game {
   
   private func update() {
     if self.isFourInRow() {
-      self.statusHandler(.finished(winner: self.activePlayer))
+      self.status.value = .finished(winner: self.activePlayer)
     } else if self.isFinished() {
-      self.statusHandler(.finished(winner: nil))
+      self.status.value = .finished(winner: nil)
     } else {
       self.activePlayer = self.switchActivePlayer()
-      self.statusHandler(.active(self.activePlayer!))
+      self.status.value = .active(self.activePlayer!)
     }
   }
   

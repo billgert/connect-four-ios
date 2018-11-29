@@ -26,11 +26,15 @@ class BoardViewModel: ViewModel {
 
     super.init()
     
-    self.game.statusHandler = { [unowned self] status in
+    self.game.status.subscribe { [unowned self] status in
+      self.updateHandler()
+      
       switch status {
+      case .inactive:
+        self.restartButtonIsHidden.value = true
       case .active(let player):
         self.restartButtonIsHidden.value = true
-        self.currentPlayerTitle.value = "Active player: \(player.name)"
+        self.currentPlayerTitle.value = "\(player.name)'s turn"
         self.currentPlayerTitleColor.value = player.color
       case .finished(winner: let player):
         self.restartButtonIsHidden.value = false
@@ -60,7 +64,6 @@ class BoardViewModel: ViewModel {
       let disk = try self.game.dropDiskInColumn(section)
       let cellModel = self.gridSectionCellModels[disk.coordinate.column][disk.coordinate.row]
       cellModel.color = disk.color
-      self.updateHandler()
     } catch {
       self.errorMessage.value = error.localizedDescription
     }

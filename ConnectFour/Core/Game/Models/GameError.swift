@@ -5,7 +5,8 @@ extension Game {
     case activePlayer
     case noColumns
     case columnFull
-
+    case gameFinished
+    
     var errorDescription: String? {
       switch self {
       case .activePlayer:
@@ -14,6 +15,8 @@ extension Game {
         return NSLocalizedString("There are no columns for building the game.", comment: "")
       case .columnFull:
         return NSLocalizedString("The column is full.", comment: "")
+      case .gameFinished:
+        return NSLocalizedString("Game is finished.", comment: "")
       }
     }
   }
