@@ -86,12 +86,12 @@ class GameTests: XCTestCase {
     XCTAssertNoThrow(try game.dropDiskInColumn(2))
     XCTAssertNoThrow(try game.dropDiskInColumn(2))
     
-    game.statusHandler = { status in
+    game.status.subscribe { status in
       switch status {
-      case .finished(let winner):
-        XCTAssertNotNil(winner)
+      case .finished(winner: let player):
+        XCTAssertNotNil(player)
       default:
-        XCTAssertTrue(false, "testGameStatusHandlerIsFourInRow: Error")
+        XCTAssertTrue(false, "testGameStatusHandlerIsFourInRowHorizontal: Error")
       }
     }
     
@@ -111,12 +111,12 @@ class GameTests: XCTestCase {
     XCTAssertNoThrow(try game.dropDiskInColumn(2))
     XCTAssertNoThrow(try game.dropDiskInColumn(3))
     
-    game.statusHandler = { status in
+    game.status.subscribe { status in
       switch status {
-      case .finished(let winner):
-        XCTAssertNotNil(winner)
+      case .finished(winner: let player):
+        XCTAssertNotNil(player)
       default:
-        XCTAssertTrue(false, "testGameStatusHandlerIsFourInRow: Error")
+        XCTAssertTrue(false, "testGameStatusHandlerIsFourInRowVertical: Error")
       }
     }
     
@@ -145,12 +145,12 @@ class GameTests: XCTestCase {
     XCTAssertNoThrow(try game.dropDiskInColumn(4))
     XCTAssertNoThrow(try game.dropDiskInColumn(3))
     
-    game.statusHandler = { status in
+    game.status.subscribe { status in
       switch status {
-      case .finished(let winner):
-        XCTAssertNotNil(winner)
+      case .finished(winner: let player):
+        XCTAssertNotNil(player)
       default:
-        XCTAssertTrue(false, "testGameStatusHandlerIsFourInRow: Error")
+        XCTAssertTrue(false, "testGameStatusHandlerIsFourInRowDiagonalRight: Error")
       }
     }
     
@@ -179,12 +179,12 @@ class GameTests: XCTestCase {
     XCTAssertNoThrow(try game.dropDiskInColumn(2))
     XCTAssertNoThrow(try game.dropDiskInColumn(3))
     
-    game.statusHandler = { status in
+    game.status.subscribe { status in
       switch status {
-      case .finished(let winner):
-        XCTAssertNotNil(winner)
+      case .finished(winner: let player):
+        XCTAssertNotNil(player)
       default:
-        XCTAssertTrue(false, "testGameStatusHandlerIsFourInRow: Error")
+        XCTAssertTrue(false, "testGameStatusHandlerIsFourInRowDiagonalLeft: Error")
       }
     }
     
